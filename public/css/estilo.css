@@ -1,0 +1,17 @@
+body {
+    background: no-repeat fixed;
+    background-color: #f4f5f7;
+    background-size: cover;
+    height: 100%;
+}
+
+#carouselwithimages {
+    max-height: 87vh !important;
+    width: fit-content !important;
+    overflow: hidden !important;
+}
+
+.m-auth {
+    margin-top: 5% !important;
+    margin-bottom: 25% !important;
+}
