@@ -20,6 +20,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/admin');
+        return redirect('/')->with('error', __('Unauthorized'));
     }
 }

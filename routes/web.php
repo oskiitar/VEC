@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('index');
@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group([
-    'middleware' => 'admin',
-    'prefix' => 'admin',
-    'namespace' => 'Admin'
-], function () {
-    Route::get('/', function () {
-        return view('home');
+Route::any('/admin', function () {
+    return view('admin.admin');
+})->middleware('admin', 'auth');
+
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+    Route::get('dashboard', function () {
+        return view('dashboard');
     });
 });
