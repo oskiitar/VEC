@@ -1,3 +1,12 @@
+/************* header **************/
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: darkgrey;
+ }
+
+
+/************* body **************/
+
 body {
     background: no-repeat fixed;
     background-color: #f4f5f7;
@@ -11,7 +20,10 @@ body {
     overflow: hidden !important;
 }
 
-.m-auth {
+.m-default {
     margin-top: 5% !important;
-    margin-bottom: 25% !important;
+    margin-bottom: 20% !important;
 }
+
+
+/************* Footer **************/

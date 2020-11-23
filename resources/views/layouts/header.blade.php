@@ -2,7 +2,7 @@
 <header class="container-fluid p-0">
 
     <!-- Barra de navegacion -->
-    <nav x-data="{ open: false }" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <!-- Logo de la empresa -->
         <a class="navbar-brand" href="/"><img src="{{ asset('img/vec.png') }}" class="w-auto"
@@ -18,19 +18,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item active mr-3">
-                    <a class="nav-link" href="/">Inicio</a>
-                </li>
-                <li class="nav-item mr-3">
                     <a class="nav-link" href="/instalaciones">Instalaciones</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Tarifas</a>
+                    <a class="nav-link" href="/tarifas">Tarifas</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Reservar</a>
+                    <a class="nav-link" href="/reservar">Reservar</a>
                 </li>
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="/contacto">Contacto</a>
                 </li>
                 @if (Route::has('login'))
                     <li class="nav-item">
@@ -40,12 +37,6 @@
                         @endguest
 
                         @auth
-                            @if (Auth::user()->isAdmin())
-                                @php
-                                header("Location: " . URL::to('/admin'), true, 302);
-                                exit();
-                                @endphp
-                            @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -53,8 +44,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                
+                                @if (Auth::user()->isAdmin())
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                        Panel de administrador
+                                    </a>
+                                @endif
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                                                                    document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

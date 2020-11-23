@@ -5,23 +5,33 @@
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
  */
 
 Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::any('/admin', function () {
+Route::get('instalaciones', function () {
+    return view('instalaciones');
+});
+
+Route::get('contacto', function () {
+    return view('contacto.contacto');
+});
+
+Route::post('email','MailController@sendMail')->name('email');
+
+Route::get('reservar', function () {
+
+})->middleware('auth','verified');
+
+Route::get('admin', function () {
     return view('admin.admin');
-})->middleware('admin', 'auth');
+})->middleware('auth','admin','verified');
 
-Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
     Route::get('dashboard', function () {
         return view('dashboard');
     });

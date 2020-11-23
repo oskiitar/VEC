@@ -1,5 +1,5 @@
 <!-- ***** Footer Inicio ***** -->
-<footer class="pt-5 bg-dark text-white-50">
+<footer class="pt-5 bg-secondary text-body">
     <div class="container d-flex">
         <div class="col">
             <h3>Mas información</h3>
@@ -16,8 +16,8 @@
                 <i class="fas fa-address-card ml-2"></i>
             </div>
             <div>
-                <label>vec.responde@gmail.com</label>
-                <i class="far fa-envelope ml-2"></i>
+                <label>info.virtualescapecoruna@gmail.com</label>
+                <i class="fas fa-envelope-square ml-2"></i>
             </div>
             <div>
                 <label>+34 609 07 16 48</label>
@@ -27,21 +27,19 @@
         <div class="col text-left">
             <h3>Redes sociales</h3>
             <div>
-                <a href="www.facebook.com">Síguenos en Facebook<i class="fab fa-facebook-square ml-2"></i></a>
+                <a class="text-dark text-decoration-none" href="http://www.facebook.com" target="_blank">Síguenos en Facebook<i class="fab fa-facebook-square ml-2"></i></a>
             </div>
             <div>
-                <a href="www.twitter.com">Síguenos en Twitter<i class="fab fa-twitter-square ml-2"></i></a>
+                <a class="text-dark text-decoration-none" href="http://www.twitter.com" target="_blank">Síguenos en Twitter<i class="fab fa-twitter-square ml-2"></i></a>
             </div>
             <div>
-                <a href="www.instagram.com">Síguenos en Instagram<i class="fab fa-instagram ml-2"></i></a>
+                <a class="text-dark text-decoration-none" href="http://www.instagram.com" target="_blank">Síguenos en Instagram<i class="fab fa-instagram ml-2"></i></a>
             </div>
             <div>
-                <a href="www.youtube.com">Síguenos en Youtube<i class="fab fa-youtube-square ml-2"></i></a>
+                <a class="text-dark text-decoration-none" href="http://www.youtube.com" target="_blank">Síguenos en Youtube<i class="fab fa-youtube-square ml-2"></i></a>
             </div>
         </div>
     </div>
-</footer>
-<footer class="pt-2 bg-secondary text-dark">
     <div class="container d-flex">
         <div class="col">
             <h6>2020 Virtual Escape Coruña</h6>
@@ -50,7 +48,7 @@
             <h6>Todos los derechos reservados</h6>
         </div>
         <div class="col">
-            <h6><a href="usuario/politica.html">Politica de privacidad</a></h6>
+            <h6><a class="text-dark text-decoration-none" href="usuario/politica.html">Politica de privacidad</a></h6>
         </div>
     </div>
 </footer>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('titulo', 'Resetear')
 @section('content')
-    <div class="m-auth">
+    <div class="m-default">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">

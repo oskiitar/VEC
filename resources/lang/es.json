@@ -1,9 +1,11 @@
 {
   "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificación a su correo electrónico.",
+  "address": "Dirección",
   "All rights reserved.": "Todos los derechos reservados.",
   "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electrónico con el enlace de verificación que le fue enviado.",
   "click here to request another": "haga clic aquí para solicitar otro",
   "Confirm Password": "Confirmar contraseña",
+  "contact_us": "Contacto",
   "E-Mail Address": "Correo electrónico",
   "Forbidden": "Prohibido",
   "Forgot Your Password?": "¿Olvidó su contraseña?",
@@ -16,6 +18,7 @@
   "Invalid signature.": "Firma no válida.",
   "Login": "Entrar",
   "Logout": "Salir",
+  "message": "Mensaje",
   "Name": "Nombre",
   "Not Found": "No encontrado",
   "Oh no": "Oh no ",
@@ -32,6 +35,7 @@
   "Send Password Reset Link": "Enviar enlace para restablecer la contraseña",
   "Server Error": "Error del servidor",
   "Service Unavailable": "Servicio no disponible",
+  "submit": "Enviar",
   "This action is unauthorized.": "Esta acción no está autorizada.",
   "This password reset link will expire in :count minutes.": "Este enlace de restablecimiento de contraseña caducará en :count minutos.",
   "Toggle navigation": "Activar navegación",
@@ -43,5 +47,6 @@
   "We won't ask for your password again for a few hours.": "No pediremos tu contraseña de nuevo por unas horas.",
   "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.",
   "Your email address is not verified.": "Tu dirección de correo electrónico no está verificada.",
+  "We'll never share your email with anyone else." : "Nunca compartiremos tu email con nadie.",
   "Whoops!": "¡Vaya!"
 }

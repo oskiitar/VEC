@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('titulo', 'Entrar')
 @section('content')
-    <div class="m-auth">
+    <div class="m-default">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -74,7 +74,7 @@
                                 </div>
                             </form>                            
                         </div>
-                        <div class="mx-auto mt-3">
+                        <div class="mx-auto mt-3 pb-3">
                             ¿Nuevo cliente?<i class="far fa-address-card ml-3"></i><a class="btn btn-link" href="{{ route('register') }}">
                                 {{ __('Register') }}</a>
                         </div>
