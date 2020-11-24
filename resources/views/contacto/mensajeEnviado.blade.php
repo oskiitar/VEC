@@ -3,12 +3,17 @@
 @section('content')
     <div class="m-default">
         <div class="container">
-            <div class="row">
-                <div class="w-50 mx-auto">
-                    <h2>Mensaje Enviado</h2>
-                    <p>Gracias por comunicarse con nosotros
-                        Su mensaje ha sido enviado con éxito y pronto atenderemos su petición. Recuerde también estamos
-                        disponibles para usted en la línea de atención al cliente 609 07 16 48</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">Mensaje Enviado</div>
+                        <div class="card-body">
+                            <p>Gracias por comunicarse con nosotros
+                                Su mensaje ha sido enviado con éxito y pronto atenderemos su petición. Recuerde también
+                                estamos
+                                disponibles para usted en la línea de atención al cliente 609 07 16 48</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

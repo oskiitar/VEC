@@ -31,9 +31,11 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb m-0 bg-secondary">
             <li class="breadcrumb-item active"><a class="text-dark" href="/">Inicio</a></li>
-            @if (Route::current()->getName() !='')
-                <li class="breadcrumb-item">@yield('titulo')</li>
+
+            @if(Route::getFacadeRoot()->current()->uri() != '/')
+            <li class="breadcrumb-item">@yield('titulo')</li>
             @endif
+
         </ol>
     </nav>
 
