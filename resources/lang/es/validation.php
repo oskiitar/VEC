@@ -151,6 +151,7 @@ return [
     'attributes' => [
         'address'               => 'dirección',
         'age'                   => 'edad',
+        'birthday'              => 'fecha de nacimiento',
         'body'                  => 'contenido',
         'city'                  => 'ciudad',
         'content'               => 'contenido',
@@ -176,6 +177,8 @@ return [
         'second'                => 'segundo',
         'sex'                   => 'sexo',
         'subject'               => 'asunto',
+        'surname'               => 'apellidos',
+        'tel'                   => 'teléfono',
         'terms'                 => 'términos',
         'time'                  => 'hora',
         'title'                 => 'título',

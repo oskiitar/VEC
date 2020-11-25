@@ -10,13 +10,15 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'email', 'tel', 'password',
     ];
 
     /**

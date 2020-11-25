@@ -7,7 +7,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header bg-primary text-white"><i
-                                class="fa fa-envelope mr-2"></i>{{ __('contact_us') }}
+                                class="fa fa-envelope mr-2"></i>{{ __('Contact_us') }}
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('email') }}">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-12 col-sm-4">
                     <div class="card bg-light mb-3">
-                        <div class="card-header bg-success text-white"><i class="fa fa-home mr-2"></i>{{ __('address') }}
+                        <div class="card-header bg-success text-white"><i class="fa fa-home mr-2"></i>{{ __('Address') }}
                         </div>
                         <div class="card-body">
                             <p>Avenida Finisterre 99</p>
