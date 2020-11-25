@@ -17,6 +17,10 @@ Route::get('instalaciones', function () {
     return view('instalaciones');
 });
 
+Route::get('tarifas', function () {
+    return view('tarifas');
+});
+
 Route::get('contacto', function () {
     return view('contacto.contacto');
 });
