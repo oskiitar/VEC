@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Controlador de gestion de gmail
+ * @author Oscar Rodriguez Sedes
+ * @version 2.0
+ * @date 15.11.2020
+ */
+
 namespace App\Http\Controllers;
 
 use App\Mail\Mailer;

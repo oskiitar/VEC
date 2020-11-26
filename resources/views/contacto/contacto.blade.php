@@ -30,7 +30,8 @@
                                     <textarea class="form-control" id="message" name="msg" rows="6" required></textarea>
                                 </div>
                                 <div class="mx-auto">
-                                    <button type="submit" class="btn btn-primary text-right">{{ __('submit') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('submit') }}</button>
+                                    <button type="reset" class="btn btn-secondary ml-2">{{ __('reset') }}</button>
                                 </div>
                             </form>
                         </div>

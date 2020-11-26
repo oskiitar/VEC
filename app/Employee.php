@@ -14,4 +14,8 @@ class Employee extends Model
     protected $fillable = [
         'user_id','contract_start','contract_end'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

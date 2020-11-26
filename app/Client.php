@@ -2,16 +2,18 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Client extends User
-{
+{    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id','address','created_at'
+        'user_id', 'address', 'created_at',
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

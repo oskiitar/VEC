@@ -141,6 +141,9 @@
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Register') }}
                                         </button>
+                                        <button type="reset" class="btn btn-secondary ml-2">
+                                            {{ __('reset') }}
+                                        </button>
                                     </div>
                                 </div>
                             </form>

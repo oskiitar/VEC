@@ -31,9 +31,7 @@ Route::get('reservar', function () {
 
 })->middleware('auth','verified');
 
-Route::get('admin', function () {
-    return view('admin.admin');
-})->middleware('auth','admin','verified');
+Route::get('admin', 'AdminController@show')->middleware('auth','admin','verified');
 
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
     Route::get('dashboard', function () {

@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -18,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'email', 'tel', 'password',
+        'name', 'surname', 'birthday', 'tel', 'email', 'password',
     ];
 
     /**
@@ -40,7 +39,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_admin' => 'boolean',
     ];
 
+    protected $child_fields = [];
+
     public function isAdmin(){
         return $this->is_admin;
+    }
+
+    public function clients(){
+        return $this->hasOne('App\Client', 'user_id','id');
+    }
+
+    public function employees(){
+        return $this->hasOne('App\Client', 'user_id','id');
     }
 }
