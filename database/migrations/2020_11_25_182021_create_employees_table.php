@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->dateTime('contract_start');
-            $table->dateTime('contract_end');
+            $table->dateTime('contract_end')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }

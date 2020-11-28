@@ -1,0 +1,61 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use App\User;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $clients = range(1,50);
+        $employees = range(1,5);
+
+        foreach ($clients as $client){
+            DB::transaction(function () {
+                $faker = Faker::create('es_ES');
+                $user = User::create([
+                    'name' => $faker->firstName,
+                    'surname' => $faker->lastName,
+                    'birthday' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-18 years'),
+                    'tel' => $faker->tollFreeNumber,
+                    'email' => $faker->freeEmail,
+                    'email_verified_at' => now(),
+                    'password' => $faker->password,
+                ]);
+    
+                DB::table('clients')->insert([
+                    'user_id' => $user->id,
+                    'address' => $faker->streetAddress,
+                    'created_at' => now(),
+                ]);
+            });            
+        }
+
+        foreach ($employees as $employee){
+            DB::transaction(function () {
+                $faker = Faker::create('es_ES');
+                $user = User::create([
+                    'name' => $faker->firstName,
+                    'surname' => $faker->lastName,
+                    'birthday' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-18 years'),
+                    'tel' => $faker->tollFreeNumber,
+                    'email' => $faker->freeEmail,
+                    'email_verified_at' => now(),
+                    'password' => $faker->password,
+                ]);
+    
+                DB::table('employees')->insert([
+                    'user_id' => $user->id,
+                    'contract_start' => now(),
+                    'contract_end' => null,
+                ]);
+            });            
+        }
+    }
+}

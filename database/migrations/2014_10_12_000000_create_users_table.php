@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name', 150);
             $table->string('surname');
             $table->date('birthday')->nullable();
-            $table->string('tel', 10);
+            $table->string('tel', 12);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             'tel' => '609071648',
             'email' => env('MAIL_FROM_ADDRESS'),
             'password' => '$2y$10$7gfThLdEF2EXuMq1C1sMDuSuvCE1gxpTqkDbdnc3RWASqzeovF3FC',
+            'email_verified_at' => now(),
             'is_admin' => 1,
         ]);
     }
