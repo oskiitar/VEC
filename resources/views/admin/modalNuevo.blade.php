@@ -12,13 +12,13 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <label for="nameNuevo" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                            <input id="nameNuevo" type="text" class="form-control @error('nameNuevo') is-invalid @enderror"
                                 name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                            @error('name')
+                            @error('nameNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -27,13 +27,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                        <label for="surnameNuevo" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                         <div class="col-md-6">
-                            <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror"
+                            <input id="surnameNuevo" type="text" class="form-control @error('surnameNuevo') is-invalid @enderror"
                                 name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
-                            @error('surname')
+                            @error('surnameNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -42,14 +42,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
+                        <label for="birthdayNuevo" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                         <div class="col-md-6">
-                            <input id="birthday" type="date"
-                                class="form-control @error('birthday') is-invalid @enderror" name="birthday"
+                            <input id="birthdayNuevo" type="date"
+                                class="form-control @error('birthdayNuevo') is-invalid @enderror" name="birthday"
                                 value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
 
-                            @error('birthday')
+                            @error('birthdayNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -58,13 +58,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+                        <label for="telNuevo" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
 
                         <div class="col-md-6">
-                            <input id="tel" type="number" class="form-control @error('tel') is-invalid @enderror"
+                            <input id="telNuevo" type="number" class="form-control @error('telNuevo') is-invalid @enderror"
                                 name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
 
-                            @error('tel')
+                            @error('telNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -73,13 +73,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                        <label for="addressNuevo" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                         <div class="col-md-6">
-                            <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                            <input id="addressNuevo" type="text" class="form-control @error('addressNuevo') is-invalid @enderror"
                                 name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
-                            @error('address')
+                            @error('addressNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -88,14 +88,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="email"
+                        <label for="emailNuevo"
                             class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                            <input id="emailNuevo" type="email" class="form-control @error('emailNuevo') is-invalid @enderror"
                                 name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                            @error('email')
+                            @error('emailNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -104,14 +104,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <label for="passwordNuevo" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                            <input id="passwordNuevo" type="password"
+                                class="form-control @error('passwordNuevo') is-invalid @enderror" name="password" required
                                 autocomplete="new-password">
 
-                            @error('password')
+                            @error('passwordNuevo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -120,11 +120,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password-confirm"
+                        <label for="password-confirmNuevo"
                             class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control"
+                            <input id="password-confirmNuevo" type="password" class="form-control"
                                 name="password_confirmation" required autocomplete="new-password">
                         </div>
                     </div>

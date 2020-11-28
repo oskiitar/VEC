@@ -7,54 +7,14 @@
                 <div class="col-0 offset-1">
                     <div class="card bg-dark">
                         <div class="btn-group-vertical text-white p-3">
-                            <button type="button" class="btn btn-light active mb-2">Clientes</button>
-                            <button type="button" class="btn btn-light active mb-2">Empleados</button>
-                            <button type="button" class="btn btn-light active mb-2">Reservas</button>
-                          </div>
+                            <button type="button" class="btn btn-light active mb-2" onclick="selectClients()">Clientes</button>
+                            <button type="button" class="btn btn-light mb-2" onclick="selectEmployees()">Empleados</button>
+                            <button type="button" class="btn btn-light mb-2">Reservas</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-8 offset-1">
-                    <table class="table table-hover table-condensed align-content-center small">
-                        <caption>
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalNuevo">
-                                Nuevo<i class="fas fa-address-book ml-2"></i>
-                            </button>
-                        </caption>
-                        <tr class="bg-dark text-white">
-                            <th>{{ __('Name') }}</th>
-                            <th>{{ __('Surname') }}</th>
-                            <th>{{ __('Birthday') }}</th>
-                            <th>{{ __('Tel') }}</th>
-                            <th>{{ __('Email') }}</th>
-                            <th>{{ __('Address') }}</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-
-                        @if (is_array($clients) || is_object($clients))
-                            @foreach ($clients as $client)
-                                <tr>
-                                    <td>{{ $client->user->name }}</td>
-                                    <td>{{ $client->user->surname }}</td>
-                                    <td>{{ $client->user->birthday }}</td>
-                                    <td>{{ $client->user->tel }}</td>
-                                    <td>{{ $client->user->email }}</td>
-                                    <td>{{ $client->address }}</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm" data-toggle="modal"
-                                            data-target="#modalEdicion" onclick="">
-                                            <i class="fas fa-user-edit"></i>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-danger btn-sm" onclick="">
-                                            <i class="fas fa-user-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @endif
-                    </table>
+                    <div id="tabla"></div>
                 </div>
             </div>
 
@@ -64,4 +24,41 @@
 
         </div>
     </div>
+@endsection
+
+@section('footer')
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/adminFunciones.js') }}"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        // recibe una callback de la llamada ajax
+        $(document).ready(function() {
+            selectClients();
+        });
+
+        function selectClients() {
+            loadData('client', htmlData);
+        }
+
+        function selectEmployees() {
+            loadData('employee', htmlData);
+        }
+
+        function selectReservations() {
+            loadData('reservation', htmlData);
+        }
+
+        function htmlData(data) {
+            $('#tabla').html(data);
+        }
+
+    </script>
 @endsection

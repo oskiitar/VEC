@@ -1,64 +1,61 @@
-function agregardatos(nombre,apellido,email,telefono){
+function loadData(model, callback) {
+	let url = 'admin/' + model;	
+	$.ajax({
+		type: "GET",
+		url: url,
+		success: function (res) {
+			alertify.success('Datos cargados');
+			callback(res);
+		},
+		error: function (e) {
+			console.log(e.responseText);
+			alertify.error("Fallo el servidor");
+		}
+	});	
+}
 
-	cadena="nombre=" + nombre + 
-			"&apellido=" + apellido +
-			"&email=" + email +
-			"&telefono=" + telefono;
+function saveData(url, datos) {
 
 	$.ajax({
-		type:"POST",
-		url:"php/agregarDatos.php",
-		data:cadena,
-		success:function(r){
-			if(r==1){
-				$('#tabla').load('componentes/tabla.php');
-				 $('#buscador').load('componentes/buscador.php');
-				alertify.success("agregado con exito :)");
-			}else{
-				alertify.error("Fallo el servidor :(");
+		type: "POST",
+		url: url,
+		data: datos,
+		success: function (res) {
+			if (res == 1) {
+				$('#table').load('admin/clients');
+				alertify.success("Se ha guardado con exito");
+			} else {
+				alertify.error("Fallo el servidor");
 			}
 		}
 	});
 
 }
 
-function agregaform(datos){
+function updateData() {
 
-	d=datos.split('||');
+	id = $('#idpersona').val();
+	nombre = $('#nombreu').val();
+	apellido = $('#apellidou').val();
+	email = $('#emailu').val();
+	telefono = $('#telefonou').val();
 
-	$('#idpersona').val(d[0]);
-	$('#nombreu').val(d[1]);
-	$('#apellidou').val(d[2]);
-	$('#emailu').val(d[3]);
-	$('#telefonou').val(d[4]);
-	
-}
-
-function actualizaDatos(){
-
-
-	id=$('#idpersona').val();
-	nombre=$('#nombreu').val();
-	apellido=$('#apellidou').val();
-	email=$('#emailu').val();
-	telefono=$('#telefonou').val();
-
-	cadena= "id=" + id +
-			"&nombre=" + nombre + 
-			"&apellido=" + apellido +
-			"&email=" + email +
-			"&telefono=" + telefono;
+	cadena = "id=" + id +
+		"&nombre=" + nombre +
+		"&apellido=" + apellido +
+		"&email=" + email +
+		"&telefono=" + telefono;
 
 	$.ajax({
-		type:"POST",
-		url:"php/actualizaDatos.php",
-		data:cadena,
-		success:function(r){
-			
-			if(r==1){
+		type: "POST",
+		url: "php/actualizaDatos.php",
+		data: cadena,
+		success: function (r) {
+
+			if (r == 1) {
 				$('#tabla').load('componentes/tabla.php');
 				alertify.success("Actualizado con exito :)");
-			}else{
+			} else {
 				alertify.error("Fallo el servidor :(");
 			}
 		}
@@ -66,27 +63,27 @@ function actualizaDatos(){
 
 }
 
-function preguntarSiNo(id){
-	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
-					function(){ eliminarDatos(id) }
-                , function(){ alertify.error('Se cancelo')});
+function confirmData(id, tabla) {
+	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?',
+		function () { eliminarDatos(id, url) }
+		, function () { alertify.error('Se cancelo') });
 }
 
-function eliminarDatos(id){
+function deleteData(id, url) {
 
-	cadena="id=" + id;
+	let datos = "id=" + id;
 
-		$.ajax({
-			type:"POST",
-			url:"php/eliminarDatos.php",
-			data:cadena,
-			success:function(r){
-				if(r==1){
-					$('#tabla').load('componentes/tabla.php');
-					alertify.success("Eliminado con exito!");
-				}else{
-					alertify.error("Fallo el servidor :(");
-				}
+	$.ajax({
+		type: "POST",
+		url: "php/eliminarDatos.php",
+		data: datos,
+		success: function (res) {
+			if (res == 1) {
+				$('#tabla').load('componentes/tabla.php');
+				alertify.success("Eliminado con exito!");
+			} else {
+				alertify.error("Fallo el servidor :(");
 			}
-		});
+		}
+	});
 }

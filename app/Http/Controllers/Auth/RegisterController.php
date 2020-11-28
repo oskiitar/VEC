@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use App\Client;
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -83,7 +83,7 @@ class RegisterController extends Controller
                 'user_id' => $user->id,
                 'address' => $data['address'],
                 'created_at' => now(),
-            ]);
+            ]);    
 
             return $user;
         });

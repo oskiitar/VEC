@@ -5,57 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "ecbf9f2b484657b79b37fba9824cffa0",
-    "packages": [
-        {
-            "name": "cvsouth/eloquent-inheritance",
-            "version": "1.0.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cvsouth/eloquent-inheritance.git",
-                "reference": "06cbb4313ac5240313a98fa43eb62f5ad91589a2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cvsouth/eloquent-inheritance/zipball/06cbb4313ac5240313a98fa43eb62f5ad91589a2",
-                "reference": "06cbb4313ac5240313a98fa43eb62f5ad91589a2",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "^2.10",
-                "illuminate/database": "5.8.*|6.*|^7.0|^8.0",
-                "illuminate/support": "5.8.*|6.*|^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Cvsouth\\EloquentInheritance\\Providers\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cvsouth\\EloquentInheritance\\": "src/"
-                },
-                "files": []
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Colin South",
-                    "email": "contact@colinsouth.com"
-                }
-            ],
-            "description": "Joined-table inheritance for Laravel",
-            "support": {
-                "issues": "https://github.com/cvsouth/eloquent-inheritance/issues",
-                "source": "https://github.com/cvsouth/eloquent-inheritance/tree/1.0.10"
-            },
-            "time": "2020-09-09T09:29:40+00:00"
-        },
+    "packages": [        
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",

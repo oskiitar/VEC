@@ -7,6 +7,7 @@
     <meta name="description"
         content="Proyecto fin de ciclo Desarrollo de aplicaciones web realizado en Laravel/Bootstrap">
     <meta name="author" content="Oscar Rodriguez Sedes">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Titulo  -->
     <title>VEC - @yield('titulo')</title>
@@ -15,10 +16,19 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Hoja de estilos -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/estilo.css') }}">
+    <link rel="stylesheet" href="alertify/css/alertify.css">
 
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <!-- popper -->
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <!-- Bootstrap js -->
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+    <!-- Alertyfy js -->
+    <script src="{{ asset('alertify/alertify.js') }}"></script>
 
 </head>
 
@@ -32,8 +42,10 @@
         <ol class="breadcrumb m-0 bg-secondary">
             <li class="breadcrumb-item active"><a class="text-dark" href="/">Inicio</a></li>
 
-            @if(Route::getFacadeRoot()->current()->uri() != '/')
-            <li class="breadcrumb-item">@yield('titulo')</li>
+            @if (Route::getFacadeRoot()
+        ->current()
+        ->uri() != '/')
+                <li class="breadcrumb-item">@yield('titulo')</li>
             @endif
 
         </ol>
@@ -49,15 +61,12 @@
 
     <!-- ============= Footer ============= -->
 
-    @include('layouts.footer')
+    @section('footer')
+        @include('layouts.footer')
 
+    @show
 
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
-    <!-- popper -->
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <!-- Bootstrap js -->
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    @yield('script')
 
 </body>
 

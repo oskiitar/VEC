@@ -34,7 +34,6 @@ Route::get('reservar', function () {
 Route::get('admin', 'AdminController@show')->middleware('auth','admin','verified');
 
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('client', 'AdminController@loadClients');
+    Route::get('employee', 'AdminController@loadEmployees');
 });
