@@ -1,5 +1,3 @@
-<table class="table table-hover table-condensed align-content-center small">
-    
     <caption>
         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalNuevo">
             Nuevo<i class="fas fa-address-book ml-2"></i>
@@ -45,5 +43,3 @@
             </tr>
         @endforelse
     </tbody>
-
-</table>

@@ -16,19 +16,19 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Hoja de estilos -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/estilo.css') }}">
-    <link rel="stylesheet" href="alertify/css/alertify.css">
+    
+    @section('head')
+    @show  
 
     <!-- jQuery -->
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <!-- popper -->
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <!-- Bootstrap js -->
-    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
-    <!-- Alertyfy js -->
-    <script src="{{ asset('alertify/alertify.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>    
 
 </head>
 
@@ -63,7 +63,6 @@
 
     @section('footer')
         @include('layouts.footer')
-
     @show
 
     @yield('script')
