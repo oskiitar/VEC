@@ -64,7 +64,7 @@
                                     <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="tel" type="number"
+                                        <input id="tel" type="tel"
                                             class="form-control @error('tel') is-invalid @enderror" name="tel"
                                             value="{{ old('tel') }}" required autocomplete="tel" autofocus>
 

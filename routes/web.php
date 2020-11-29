@@ -36,4 +36,9 @@ Route::get('admin', 'AdminController@show')->middleware('auth','admin','verified
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
     Route::get('client', 'AdminController@loadClients');
     Route::get('employee', 'AdminController@loadEmployees');
+    Route::post('client/create', 'AdminController@clientCreate')->name('clientCreate');
+    Route::post('employee/create', 'AdminController@employeeCreate')->name('employeeCreate');
+    Route::post('client/update', 'AdminController@clientUpdate');
+    Route::post('employee/update', 'AdminController@employeeUpdate');
+    Route::get('user/{id}','AdminController@userDelete');
 });

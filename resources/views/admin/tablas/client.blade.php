@@ -1,5 +1,5 @@
     <caption>
-        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalNuevo">
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAddClient">
             Nuevo<i class="fas fa-address-book ml-2"></i>
         </button>
     </caption>
@@ -27,12 +27,12 @@
                 <td>{{ $client->email }}</td>
                 <td>{{ $client->clients->address }}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEdicion" onclick="">
+                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditClient" onclick="editClient({{ $client }})">
                         <i class="fas fa-user-edit"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="">
+                    <button class="btn btn-danger btn-sm" onclick="deleteUser('client', {{ $client->id }})">
                         <i class="fas fa-user-times"></i>
                     </button>
                 </td>

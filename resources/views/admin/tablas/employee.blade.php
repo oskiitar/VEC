@@ -1,5 +1,5 @@
     <caption>
-        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalNuevo">
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalAddEmployee">
             Nuevo<i class="fas fa-address-book ml-2"></i>
         </button>
     </caption>
@@ -35,12 +35,12 @@
                     @endif
                 </td>
                 <td>
-                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEdicion" onclick="">
+                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditEmployee" onclick="editEmployee({{ $employee }})">
                         <i class="fas fa-user-edit"></i>
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="">
+                    <button class="btn btn-danger btn-sm" onclick="deleteUser('employee',{{ $employee->id }})">
                         <i class="fas fa-user-times"></i>
                     </button>
                 </td>

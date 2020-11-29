@@ -1,21 +1,22 @@
-<!-- Modal para edicion de users -->
-<div class="modal fade" id="modalEdicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-md" role="document">
+<!-- Modal para edicion -->
+<div class="modal fade" id="modalEditClient" tabindex="-1" role="dialog" aria-labelledby="modalEditClient">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="myModalLabel">Actualizar usuario</h3>
+                <h3 class="modal-title" id="myModalLabel">Actualizar Cliente</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
-                    class="far fa-window-close"></i></button>
+                        class="far fa-window-close"></i></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
+                <form>
+
+                    <input id="id-client" type="hidden" name="id">
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <label for="name-client" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                            <input id="name-client" type="text" class="form-control @error('name') is-invalid @enderror"
                                 name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                             @error('name')
@@ -27,10 +28,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                        <label for="surname-client" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                         <div class="col-md-6">
-                            <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror"
+                            <input id="surname-client" type="text" class="form-control @error('surname') is-invalid @enderror"
                                 name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
                             @error('surname')
@@ -42,10 +43,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
+                        <label for="birthday-client" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                         <div class="col-md-6">
-                            <input id="birthday" type="date"
+                            <input id="birthday-client" type="date"
                                 class="form-control @error('birthday') is-invalid @enderror" name="birthday"
                                 value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
 
@@ -58,10 +59,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+                        <label for="tel-client" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
 
                         <div class="col-md-6">
-                            <input id="tel" type="number" class="form-control @error('tel') is-invalid @enderror"
+                            <input id="tel-client" type="tel" class="form-control @error('tel') is-invalid @enderror"
                                 name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
 
                             @error('tel')
@@ -73,10 +74,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                        <label for="address-client" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                         <div class="col-md-6">
-                            <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
+                            <input id="address-client" type="text" class="form-control @error('address') is-invalid @enderror"
                                 name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
                             @error('address')
@@ -85,27 +86,11 @@
                                 </span>
                             @enderror
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="email"
-                            class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
+                    </div>     
 
                     <div class="form-group row mb-0 mt-5">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitEdit('client')">
                                 {{ __('Update') }}
                             </button>
                         </div>

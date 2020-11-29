@@ -24,9 +24,10 @@
                 </div>
             </div>
 
-            @include('admin.modalNuevo')
-
-            @include('admin.modalEdicion')
+            @include('admin.modal.addClient')
+            @include('admin.modal.addEmployee')
+            @include('admin.modal.editClient')
+            @include('admin.modal.editEmployee')
 
         </div>
     </div>
@@ -36,7 +37,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/adminFunciones.js') }}"></script>
+    <script src="{{ asset('js/adminAjax.js') }}"></script>
     <script src="{{ asset('alertify/alertify.js') }}"></script>
     <script src="{{ asset('dataTables/datatables.js') }}"></script>
 
@@ -72,7 +73,7 @@
             $('#tabla').empty();
             $('#loading').append('<div class="spinner-border mt-5" role="status">');
 
-            setTimeout(function() {                
+            setTimeout(function() {
                 $('#tabla').html(data).DataTable({
                     order: [0, "asc"],
                     lengthMenu: [
@@ -84,7 +85,46 @@
                     }
                 });
                 $('#loading').empty();
-            }, 500);            
+            }, 500);
+        }
+
+        function editClient(client) {
+            $('#id-client').val(client.id);
+            $('#name-client').val(client.name);
+            $('#surname-client').val(client.surname);
+            $('#birthday-client').val(client.birthday);
+            $('#tel-client').val(client.tel);
+            $('#address-client').val(client.clients.address);
+        }
+
+        function editEmployee(employee) {
+            $('#id-employee').val(client.id);
+            $('#name-employee').val(employee.name);
+            $('#surname-employee').val(employee.surname);
+            $('#birthday-employee').val(employee.birthday);
+            $('#tel-employee').val(employee.tel);
+            $('#contract_start-edit').val(employee.employees.contract_start);
+            $('#contract_end-edit').val(employee.employees.contract_end);
+            $('#is_admin-edit').val(employee.employees.is_admin);
+        }
+
+        function submitEdit(model) {
+            switch (model) {
+                case 'client':
+                    let client = {
+                        id: $('#id-client').val(),
+                        name: $('#name-client').val(),
+                        surname: $('#surname-client').val(),
+                        birthday: $('#birthday-client').val(),
+                        tel: $('#tel-client').val(),
+                        address: $('#address-client').val()
+                    }
+                    saveData('client', client, true);
+            }
+        }
+
+        function deleteUser(model, id) {
+            confirmDelete(model, id);
         }
 
     </script>
