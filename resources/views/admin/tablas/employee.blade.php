@@ -48,6 +48,15 @@
         @empty
             <tr>
                 <td>{{ 'No hay datos' }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         @endforelse
     </tbody>

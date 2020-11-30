@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\User;
+use App\Client;
+use App\Employee;
 
 class UserSeeder extends Seeder
 {
@@ -28,12 +30,12 @@ class UserSeeder extends Seeder
                     'email_verified_at' => now(),
                     'password' => $faker->password,
                 ]);
-    
-                DB::table('clients')->insert([
-                    'user_id' => $user->id,
-                    'address' => $faker->streetAddress,
-                    'created_at' => now(),
-                ]);
+
+                $client = new Client;
+                $client->address = $faker->streetAddress;
+                $client->created_at = now();
+
+                $user->clients()->save($client);
             });            
         }
 
@@ -49,12 +51,12 @@ class UserSeeder extends Seeder
                     'email_verified_at' => now(),
                     'password' => $faker->password,
                 ]);
-    
-                DB::table('employees')->insert([
-                    'user_id' => $user->id,
-                    'contract_start' => now(),
-                    'contract_end' => null,
-                ]);
+
+                $employee = new Employee;
+                $employee->contract_start = now();
+                $employee->contract_end = null;
+
+                $user->employees()->save($employee);
             });            
         }
     }

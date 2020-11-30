@@ -38,10 +38,8 @@ class AdminController extends Controller
     public function clientUpdate(Request $request){
         $user = User::find($request->id);
         $user->fill($request->all());
-        $client = Client::where('user_id', $request->id)->get();
-        $client->address = $request->address;
-        
-        $user->save();        
+        $user->clients->fill($request->all());
+        $user->push();     
     }
 
     public function employeeUpdate(Request $request){

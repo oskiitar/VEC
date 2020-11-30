@@ -71,19 +71,19 @@ class RegisterController extends Controller
     {
         $user = DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data['name'],
-                'surname' => $data['surname'],
-                'email' => $data['email'],
-                'birthday' => $data['birthday'],
-                'tel' => $data['tel'],
-                'password' => Hash::make($data['password']),
+                'name' => $data->name,
+                'surname' => $data->surname,
+                'email' => $data->email,
+                'birthday' => $data->birthday,
+                'tel' => $data->tel,
+                'password' => Hash::make($data->password),
             ]);
 
-            Client::create([
-                'user_id' => $user->id,
-                'address' => $data['address'],
-                'created_at' => now(),
-            ]);    
+            $client = new Client;
+            $client->address = $data->address;
+            $client->created_at = now();
+
+            $user->clients()->save($client);
 
             return $user;
         });

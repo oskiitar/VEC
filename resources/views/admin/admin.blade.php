@@ -70,7 +70,9 @@
                 $('#tabla').DataTable().destroy();
             }
 
+            // Vacia el elemento tabla
             $('#tabla').empty();
+            // Carga el spinner hasta que la tabla se muestre
             $('#loading').append('<div class="spinner-border mt-5" role="status">');
 
             setTimeout(function() {
@@ -85,7 +87,7 @@
                     }
                 });
                 $('#loading').empty();
-            }, 500);
+            }, 500); // Tiempo en aparecer la tabla            
         }
 
         function editClient(client) {

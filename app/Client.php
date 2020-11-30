@@ -3,14 +3,16 @@
 namespace App;
 
 class Client extends User
-{    
+{
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id', 'address', 'created_at',
+        'id', 'address', 'created_at'
     ];
 
     public function user(){
