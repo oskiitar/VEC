@@ -7,68 +7,49 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
                         class="far fa-window-close"></i></button>
             </div>
-            <div class="modal-body ">
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
+            <div class="modal-body">
+                <form id="employeeForm" method="POST" action="javascript:submitCreate('employee')">
 
                     <div class="form-group row">
-                        <label for="name-addEmployee" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <label for="name-addEmployee"
+                            class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name-addEmployee" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="name-addEmployee" type="text" maxlength="150" class="form-control" name="name"
+                                required autocomplete="name" autofocus>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="surname-addEmployee" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                        <label for="surname-addEmployee"
+                            class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                         <div class="col-md-6">
-                            <input id="surname-addEmployee" type="text" class="form-control @error('surname') is-invalid @enderror"
-                                name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
-
-                            @error('surname')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="surname-addEmployee" type="text" maxlength="255" class="form-control"
+                                name="surname" required autocomplete="surname" autofocus>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="birthday-addEmployee" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
+                        <label for="birthday-addEmployee"
+                            class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                         <div class="col-md-6">
-                            <input id="birthday-addEmployee" type="date"
-                                class="form-control @error('birthday') is-invalid @enderror" name="birthday"
-                                value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
-
-                            @error('birthday')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="birthday-addEmployee" type="date" class="form-control" name="birthday" required
+                                autocomplete="birthday" autofocus onblur="validateBirthday(this.value, 'addEmployee')">
+                                <span class="error text-danger" role="alert">
+                                <strong id="birthday-addEmployee-error"></strong>
+                            </span>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="tel-addEmployee" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+                        <label for="tel-addEmployee"
+                            class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
 
                         <div class="col-md-6">
-                            <input id="tel-addEmployee" type="tel" class="form-control @error('tel') is-invalid @enderror"
-                                name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
-
-                            @error('tel')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="tel-addEmployee" type="tel" minlength="9" maxlength="12" class="form-control"
+                                name="tel" required autocomplete="tel" autofocus>
                         </div>
                     </div>
 
@@ -77,14 +58,8 @@
                             class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                         <div class="col-md-6">
-                            <input id="email-addEmployee" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="email-addEmployee" type="email" maxlength="255" class="form-control" name="email"
+                                required autocomplete="email">
                         </div>
                     </div>
 
@@ -93,15 +68,8 @@
                             class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password-addEmployee" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                required autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="password-addEmployee" type="password" minlength="8" maxlength="20"
+                                class="form-control" name="password" required autocomplete="new-password">
                         </div>
                     </div>
 
@@ -111,54 +79,35 @@
 
                         <div class="col-md-6">
                             <input id="password-addEmployee-confirm" type="password" class="form-control"
-                                name="password_confirmation" required autocomplete="new-password">
+                                name="password_confirmation" required autocomplete="new-password"
+                                onblur="validatePassword($('#password-addEmployee').val(), this.value, 'addEmployee')">
+                                <span class="error text-danger" role="alert">
+                                <strong id="password-addEmployee-error"></strong>
+                            </span>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="contract_start"
+                        <label for="contract_start-addEmployee"
                             class="col-md-4 col-form-label text-md-right">{{ __('Contract_start') }}</label>
 
                         <div class="col-md-6">
-                            <input id="contract_start" type="date"
-                                class="form-control @error('contract_start') is-invalid @enderror" name="contract_start"
-                                required autocomplete="contract_start" autofocus>
-
-                            @error('contract_start')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="contract_start-addEmployee" type="date" class="form-control"
+                                name="contract_start" required autocomplete="contract_start" autofocus onblur="validateContract_start(this.value, 'addEmployee')">
+                                <span class="error text-danger" role="alert">
+                                <strong id="contract_start-addEmployee-error"></strong>
+                            </span>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="contract_end"
-                            class="col-md-4 col-form-label text-md-right">{{ __('Contract_end') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="contract_end" type="date"
-                                class="form-control @error('contract_end') is-invalid @enderror" name="contract_end"
-                                required autocomplete="contract_end" autofocus>
-
-                            @error('contract_end')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="is_admin" class="col-md-4 col-form-label text-md-right">{{ __('Is_Admin') }}</label>
+                        <label for="is_admin-addEmployee" class="col-md-4 col-form-label text-md-right">{{ __('Is_Admin') }}</label>
 
                         <div class="col-sm-1">
-                            <div class="btn-group-toggle" data-toggle="buttons">
-                                <label class="form-control btn btn-outline-info !active">
-                                    <input id="is_admin" name="is_admin" type="checkbox" checked autocomplete="off">
-                                    <i class="fas fa-user-shield"></i>
-                                </label>
-                            </div>
+                            <label class="switcher">
+                                <input id="is_admin-addEmployee" type="checkbox">
+                                <span class="sliderer rounder"></span>
+                            </label>
                         </div>
                     </div>
 

@@ -18,6 +18,24 @@ class UserSeeder extends Seeder
         $clients = range(1,50);
         $employees = range(1,5);
 
+        DB::transaction(function () {
+            $user = User::create([
+                'name' => 'admin',
+                'surname' => 'superadmin',
+                'tel' => '609071648',
+                'email' => env('MAIL_FROM_ADDRESS'),
+                'password' => '$2y$10$7gfThLdEF2EXuMq1C1sMDuSuvCE1gxpTqkDbdnc3RWASqzeovF3FC',
+                'email_verified_at' => now(),
+                'is_admin' => 1,
+            ]);
+
+            $employee = new Employee;
+            $employee->contract_start = now();
+            $employee->contract_end = null;
+
+            $user->employees()->save($employee);
+        });
+
         foreach ($clients as $client){
             DB::transaction(function () {
                 $faker = Faker::create('es_ES');

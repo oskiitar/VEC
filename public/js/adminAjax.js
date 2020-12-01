@@ -28,7 +28,7 @@ async function saveData(model, data, update) {
 		url: url,
 		data: data,
 		success: function () {
-			alertify.success('Datos guardados');
+			alertify.success('Datos guardados');			
 			res = true;
 		},
 		error: function (e) {
@@ -38,10 +38,12 @@ async function saveData(model, data, update) {
 	});
 
 	if (res) {
-		if (model == 'client') {
-			selectClients();
-		} else {
-			selectEmployees();
+		switch(model){
+			case 'client':
+				selectClients();
+				break;
+			case 'employee':
+				selectEmployees();
 		}
 	}
 }
@@ -70,10 +72,12 @@ async function deleteData(model, id) {
 	});
 
 	if (res) {
-		if (model == 'client') {
-			selectClients();
-		} else {
-			selectEmployees();
+		switch(model){
+			case 'client':
+				selectClients();
+				break;
+			case 'employee':
+				selectEmployees();
 		}
 	}
 }

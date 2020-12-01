@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'birthday', 'tel', 'email', 'password',
+        'name', 'surname', 'birthday', 'tel', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -35,15 +35,11 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean',
+        'email_verified_at' => 'datetime', 
+        'is_admin' => 'boolean',       
     ];
 
     protected $child_fields = [];
-
-    public function isAdmin(){
-        return $this->is_admin;
-    }
 
     public function clients(){
         return $this->hasOne('App\Client', 'id','id');
@@ -51,5 +47,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function employees(){
         return $this->hasOne('App\Employee', 'id','id');
+    }
+
+    public function isAdmin(){
+        return $this->is_admin;
     }
 }

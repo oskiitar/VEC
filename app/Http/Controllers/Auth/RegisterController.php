@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Client;
+use App\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'max:25', 'confirmed'],
+            'address' => ['required', 'string', 'max:255']
         ]);
     }
 
@@ -71,19 +73,19 @@ class RegisterController extends Controller
     {
         $user = DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data->name,
-                'surname' => $data->surname,
-                'email' => $data->email,
-                'birthday' => $data->birthday,
-                'tel' => $data->tel,
-                'password' => Hash::make($data->password),
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'email' => $data['email'],
+                'birthday' => $data['birthday'],
+                'tel' => $data['tel'],
+                'password' => Hash::make($data['password']),
             ]);
 
-            $client = new Client;
-            $client->address = $data->address;
-            $client->created_at = now();
-
-            $user->clients()->save($client);
+                $client = new Client;
+                $client->address = $data['address'];
+                $client->created_at = now();
+    
+                $user->clients()->save($client);                  
 
             return $user;
         });

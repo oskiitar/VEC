@@ -8,7 +8,7 @@
                         class="far fa-window-close"></i></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="editClientForm" method="POST" action="javascript:submitEdit('client')">
 
                     <input id="id-client" type="hidden" name="id">
 
@@ -16,14 +16,8 @@
                         <label for="name-client" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name-client" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="name-client" type="text" maxlength="150" class="form-control"
+                                name="name" required autocomplete="name" autofocus> 
                         </div>
                     </div>
 
@@ -31,14 +25,8 @@
                         <label for="surname-client" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                         <div class="col-md-6">
-                            <input id="surname-client" type="text" class="form-control @error('surname') is-invalid @enderror"
-                                name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
-
-                            @error('surname')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="surname-client" type="text" maxlength="255" class="form-control"
+                                name="surname" required autocomplete="surname" autofocus>
                         </div>
                     </div>
 
@@ -47,14 +35,11 @@
 
                         <div class="col-md-6">
                             <input id="birthday-client" type="date"
-                                class="form-control @error('birthday') is-invalid @enderror" name="birthday"
-                                value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
-
-                            @error('birthday')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                class="form-control" name="birthday"
+                                required autocomplete="birthday" autofocus onblur="validateBirthday(this.value, 'client')">
+                                <span class="error text-danger" role="alert">
+                                    <strong id="birthday-client-error"></strong>
                                 </span>
-                            @enderror
                         </div>
                     </div>
 
@@ -62,14 +47,8 @@
                         <label for="tel-client" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
 
                         <div class="col-md-6">
-                            <input id="tel-client" type="tel" class="form-control @error('tel') is-invalid @enderror"
-                                name="tel" value="{{ old('tel') }}" required autocomplete="tel" autofocus>
-
-                            @error('tel')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="tel-client" type="tel" minlength="9" maxlength="12" class="form-control"
+                                name="tel" required autocomplete="tel" autofocus>
                         </div>
                     </div>
 
@@ -77,20 +56,14 @@
                         <label for="address-client" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                         <div class="col-md-6">
-                            <input id="address-client" type="text" class="form-control @error('address') is-invalid @enderror"
-                                name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
-
-                            @error('address')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="address-client" type="text" maxlength="255" class="form-control"
+                                name="address" required autocomplete="address" autofocus>
                         </div>
                     </div>     
 
                     <div class="form-group row mb-0 mt-5">
                         <div class="col-md-6 offset-md-4">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitEdit('client')">
+                            <button type="submit" class="btn btn-primary">
                                 {{ __('Update') }}
                             </button>
                         </div>
