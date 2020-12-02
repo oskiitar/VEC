@@ -6,13 +6,15 @@ class Client extends User
 {
     public $timestamps = false;
 
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id', 'address', 'created_at'
+        'address', 'created_at'
     ];
 
     public function user(){

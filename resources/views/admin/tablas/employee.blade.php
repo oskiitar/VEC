@@ -27,8 +27,8 @@
                 <td>{{ $employee->birthday }}</td>
                 <td>{{ $employee->tel }}</td>
                 <td>{{ $employee->email }}</td>
-                <td>{{ $employee->employees->contract_start }}</td>
-                <td>{{ $employee->employees->contract_end }}</td>
+                <td>{{ $employee->employee->contract_start }}</td>
+                <td>{{ $employee->employee->contract_end }}</td>
                 <td>
                     @if ($employee->is_admin == 1)
                         <i class="fas fa-user-shield"></i>

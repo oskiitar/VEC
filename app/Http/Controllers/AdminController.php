@@ -12,7 +12,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Client;
 use App\Employee;
-use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -98,13 +97,13 @@ class AdminController extends Controller
     }
     
     public function loadClients(){
-        $clients = User::has('clients')->get();
+        $clients = User::has('client')->get();
         $view = view('admin.tablas.client')->with('clients', $clients)->render();                
         return $view;
     }
 
     public function loadEmployees(){
-        $employees = User::has('employees')->get();
+        $employees = User::has('employee')->get();
         $view = view('admin.tablas.employee')->with('employees', $employees)->render();                
         return $view;
     }
@@ -127,7 +126,7 @@ class AdminController extends Controller
             $client->address = $request->address;
             $client->created_at = now();
         
-            $user->clients()->save($client);
+            $user->client()->save($client);
         }); 
     }
 
@@ -149,7 +148,7 @@ class AdminController extends Controller
             $employee = new Employee;
             $employee->fill($request->all());
         
-            $user->employees()->save($employee);
+            $user->employee()->save($employee);
         });                                 
     }
 
@@ -159,7 +158,7 @@ class AdminController extends Controller
 
         $user = User::find($request->id);
         $user->fill($request->all());
-        $user->clients->fill($request->all());
+        $user->client->fill($request->all());
         $user->push();     
     }
 
@@ -169,7 +168,7 @@ class AdminController extends Controller
 
         $user = User::find($request->id);
         $user->fill($request->all());
-        $user->employees->fill($request->all());
+        $user->employee->fill($request->all());
         $user->push(); 
     }
 

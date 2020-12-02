@@ -25,7 +25,7 @@
                 <td>{{ $client->birthday }}</td>
                 <td>{{ $client->tel }}</td>
                 <td>{{ $client->email }}</td>
-                <td>{{ $client->clients->address }}</td>
+                <td>{{ $client->client->address }}</td>
                 <td>
                     <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modalEditClient" onclick="editClient({{ $client }})">
                         <i class="fas fa-user-edit"></i>

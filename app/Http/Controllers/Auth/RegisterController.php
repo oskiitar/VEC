@@ -85,7 +85,7 @@ class RegisterController extends Controller
                 $client->address = $data['address'];
                 $client->created_at = now();
     
-                $user->clients()->save($client);                  
+                $user->client()->save($client);                  
 
             return $user;
         });

@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
             $employee->contract_start = now();
             $employee->contract_end = null;
 
-            $user->employees()->save($employee);
+            $user->employee()->save($employee);
         });
 
         foreach ($clients as $client){
@@ -53,7 +53,7 @@ class UserSeeder extends Seeder
                 $client->address = $faker->streetAddress;
                 $client->created_at = now();
 
-                $user->clients()->save($client);
+                $user->client()->save($client);
             });            
         }
 
@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
                 $employee->contract_start = now();
                 $employee->contract_end = null;
 
-                $user->employees()->save($employee);
+                $user->employee()->save($employee);
             });            
         }
     }

@@ -28,7 +28,7 @@ Route::get('contacto', function () {
 Route::post('email','MailController@sendMail')->name('email');
 
 Route::get('reservar', function () {
-
+    return view('reservar');
 })->middleware('auth','verified');
 
 Route::get('admin', 'AdminController@show')->middleware('auth','admin','verified');

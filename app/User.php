@@ -41,12 +41,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $child_fields = [];
 
-    public function clients(){
-        return $this->hasOne('App\Client', 'id','id');
+    public function client(){
+        return $this->hasOne('App\Client', 'user_id', 'id');
     }
 
-    public function employees(){
-        return $this->hasOne('App\Employee', 'id','id');
+    public function employee(){
+        return $this->hasOne('App\Employee', 'user_id', 'id');
     }
 
     public function isAdmin(){

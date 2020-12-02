@@ -8,13 +8,15 @@ class Employee extends Model
 {
     public $timestamps = false;
 
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id','contract_start','contract_end'
+        'contract_start','contract_end'
     ];
 
     public function user(){
