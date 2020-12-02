@@ -20,4 +20,8 @@ class Client extends User
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function reserve(){
+        return $this->hasMany('App\Reserve', 'client_id');
+    }
 }

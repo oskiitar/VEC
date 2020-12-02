@@ -14,8 +14,11 @@ class CreateRentingsTable extends Migration
     public function up()
     {
         Schema::create('rentings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->integerIncrements('id');
+            $table->string('comment', 255)->nullable();
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->double('penalty')->nullable();
         });
     }
 

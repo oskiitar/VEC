@@ -14,10 +14,10 @@ class CreateReservesTable extends Migration
     public function up()
     {
         Schema::create('reserves', function (Blueprint $table) {
-            $table->unsignedInteger('client_id');
-            $table->primary('client_id');
+            $table->integerIncrements('id');     
             $table->dateTime('reserve_date');
-            $table->foreign('client_id')->references('user_id')->on('clients');
+            $table->unsignedInteger('client_id');           
+            $table->foreign('client_id')->references('user_id')->on('clients')->onUpdate('cascade');
         });
     }
 

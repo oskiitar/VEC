@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Renting extends Model
+class Pay extends Model
 {
     public $timestamps = false;
 
@@ -14,10 +14,14 @@ class Renting extends Model
      * @var array
      */
     protected $fillable = [
-        'comment', 'start', 'end', 'penalty'
+        'pay_date', 'total'
     ];
 
     public function reserve(){
-        return $this->belongsToMany('App\Reserve', 'renting_reserve', 'renting_id');
+        return $this->belongsTo('App\Reserve');
+    }
+
+    public function payway(){
+        return $this->hasOne('App\Payway', 'pay_id');
     }
 }
