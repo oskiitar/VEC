@@ -17,9 +17,7 @@ class CreatePaysTable extends Migration
             $table->integerIncrements('id');
             $table->dateTime('pay_date');
             $table->double('total');
-            $table->unsignedInteger('reserve_id');
             $table->unsignedInteger('payway_id');
-            $table->foreign('reserve_id')->references('id')->on('reserves');
             $table->foreign('payway_id')->references('id')->on('payways');
         });
     }

@@ -1,5 +1,38 @@
 /************* header **************/
 
+#logo-brand, #name-brand{
+  display: block;
+  float:left;
+}
+
+#logo-brand{
+  height: 100px;
+  margin-left: 10px;
+  animation: girar infinite 10s linear;
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+#name-brand{
+  margin: 20px;
+  height: 50px;
+}
+
+.carousel,
+.carousel-inner {
+  height: 78vh;
+}
+
+.carousel-item {
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
     color: darkgrey;
  }

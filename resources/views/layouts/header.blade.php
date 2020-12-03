@@ -4,9 +4,13 @@
     <!-- Barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <!-- Logo de la empresa -->
-        <a class="navbar-brand" href="/"><img src="{{ asset('img/vec.png') }}" class="w-auto"
-                alt="Nombre de la empresa"></a>
+        <a class="navbar-brand" href="/">
+            <!-- Logo de la empresa -->
+            <img id="logo-brand" src="{{ asset('img/logo.png') }}" class="w-auto" alt="Logo de la empresa">
+
+            <!-- Nombre de la empresa -->
+            <img id="name-brand" src="{{ asset('img/vec.png') }}" class="w-auto" alt="Nombre de la empresa">
+        </a>
 
         <!-- Boton para dispositivos moviles -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -44,15 +48,16 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                
+
                                 @if (Auth::user()->isAdmin())
                                     <a class="dropdown-item" href="{{ url('/admin') }}">
                                         Panel de administrador
                                     </a>
                                 @endif
 
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                                    document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

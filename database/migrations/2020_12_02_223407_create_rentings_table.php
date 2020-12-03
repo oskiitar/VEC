@@ -18,7 +18,6 @@ class CreateRentingsTable extends Migration
             $table->string('comment', 255)->nullable();
             $table->dateTime('start');
             $table->dateTime('end');
-            $table->double('penalty')->nullable();
         });
     }
 

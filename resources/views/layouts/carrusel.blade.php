@@ -5,15 +5,15 @@
         <li data-target="#carouselwithimages" data-slide-to="1"></li>
         <li data-target="#carouselwithimages" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner" role="listbox">
         <div class="carousel-item active" data-interval="3000">
-            <img src="{{ asset('img/banner1080.jpg') }}" class="d-block w-100" alt="Primera imagen carrusel">
+            <img src="{{ asset('img/banner-1.jpg') }}" class="d-block w-100" alt="Primera imagen carrusel">
         </div>
         <div class="carousel-item" data-interval="3000">
-            <img src="{{ asset('img/escroomvr1080.jpg') }}" class="d-block w-100" alt="Segunda imagen carrusel">
+            <img src="{{ asset('img/banner-2.jpg') }}" class="d-block w-100" alt="Segunda imagen carrusel">
         </div>
         <div class="carousel-item" data-interval="3000">
-            <img src="{{ asset('img/banner-alquiler1080.jpg') }}" class="d-block w-100" alt="Tercera imagen carrusel">
+            <img src="{{ asset('img/banner-3.jpg') }}" class="d-block w-100" alt="Tercera imagen carrusel">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselwithimages" role="button" data-slide="prev">

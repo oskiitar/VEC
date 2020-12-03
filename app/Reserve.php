@@ -8,8 +8,6 @@ class Reserve extends Model
 {
     public $timestamps = false;
 
-    protected $primaryKey = 'reserve_id';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -28,7 +26,7 @@ class Reserve extends Model
     }
 
     public function pay(){
-        return $this->hasOne('App\Pay', 'reserve_id');
+        return $this->belongsTo('App\Pay');
     }
 
     public function renting(){

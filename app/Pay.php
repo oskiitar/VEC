@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pay extends Model
 {
-    public $timestamps = false;
+    public $timestamps = false;    
 
     /**
      * The attributes that are mass assignable.
@@ -18,10 +18,10 @@ class Pay extends Model
     ];
 
     public function reserve(){
-        return $this->belongsTo('App\Reserve');
+        return $this->hasMany('App\Reserve', 'pay_id');
     }
 
     public function payway(){
-        return $this->hasOne('App\Payway', 'pay_id');
+        return $this->belongsTo('App\Payway');
     }
 }

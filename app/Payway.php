@@ -18,6 +18,6 @@ class Payway extends Model
     ];
 
     public function pay(){
-        return $this->belongsTo('App\Pay');
+        return $this->hasMany('App\Pay', 'payway_id');
     }
 }
