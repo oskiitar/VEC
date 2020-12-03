@@ -13,20 +13,24 @@ class PaywaySeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('es_ES');
-        $fakers = [];
+        Payway::create([
+            'name' => 'Visa'
+        ]);
 
-        do{
+        Payway::create([
+            'name' => 'MasterCard'
+        ]);
 
-            $fake = $faker->creditCardType;
-            
-            if (!in_Array($fake, $fakers)){
-                array_push($fakers, $fake);
-                $payway = Payway::create([
-                    'name' => $fake
-                ]);
-            }
+        Payway::create([
+            'name' => 'Paypal'
+        ]);
 
-        } while ($payway->id < 5);
+        Payway::create([
+            'name' => 'Googlepay'
+        ]);
+
+        Payway::create([
+            'name' => 'Efectivo'
+        ]);
     }
 }

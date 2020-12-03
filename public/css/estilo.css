@@ -25,14 +25,6 @@
   height: 50px;
 }
 
-.carousel,
-.carousel-inner {
-  height: 78vh;
-}
-
-.carousel-item {
-}
-
 .breadcrumb-item + .breadcrumb-item::before {
     color: darkgrey;
  }
@@ -47,10 +39,15 @@ body {
     height: 100%;
 }
 
-#carouselwithimages {
-    max-height: 87vh !important;
-    width: fit-content !important;
-    overflow: hidden !important;
+.carousel,
+.carousel-inner {
+  height: 78vh;
+}
+
+.carousel-item {
+  max-height: 87vh !important;
+  width: fit-content !important;
+  overflow: hidden !important;
 }
 
 .m-default {

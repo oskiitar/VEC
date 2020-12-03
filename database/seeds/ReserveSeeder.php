@@ -8,6 +8,7 @@ use App\Renting;
 use App\Pay;
 use App\Payway;
 use App\Invoice;
+use Carbon\Carbon;
 
 class ReserveSeeder extends Seeder
 {
@@ -20,29 +21,32 @@ class ReserveSeeder extends Seeder
     {
         $clients = Client::all();
         $faker = Faker::create('es_ES');
+        $date = Carbon::create('next tuesday')->locale('es_ES');
+        $date->hour = 16;
+        $dateEnd = Carbon::create('next tuesday')->locale('es_ES');
+        $dateEnd->hour = 17;         
 
-        foreach ($clients as $client){
-            $date = now()->addDay();
-            $dateEnd = now()->addDay()->addHour(); 
+        foreach ($clients as $client){                     
+
+            if ($dateEnd->hour == 22){
+                if($date->dayOfWeek == 0){
+                    $date->addDay();
+                    $dateEnd->addDay();
+                }  
+                $date->addDay()->hour = 16;
+                $dateEnd->addDay()->hour = 17;
+            }
+
+            $date->addHour();
+            $dateEnd->addHour();
 
             DB::transaction(function () use($client, $faker, $date, $dateEnd) {
                 // Se crea la reserva
                 $reserve = new Reserve;
                 $reserve->reserve_date = now();
 
-                // Se crea un alquiler
-                $renting = new Renting;
-                $renting->comment = $faker->text($maxNbChars = 200);
-                $renting->start = $date;
-                $renting->end = $dateEnd;
-                $renting->save();             
-                
-                // Se guarda la relacion muchos a muchos de alquiler y reserva
-                $reserve->renting()->attach($renting->id);
-
                 // Se genera un pago
                 $pay = new Pay;
-                $date->addHour();
                 $pay->pay_date = $date;
                 $pay->total = 60;
 
@@ -56,7 +60,17 @@ class ReserveSeeder extends Seeder
                 $reserve->pay()->associate($pay);
 
                 // Se guarda la relacion reserva con el cliente
-                $client->reserve()->save($reserve);                
+                $client->reserve()->save($reserve);
+                
+                // Se crea un alquiler
+                $renting = new Renting;
+                $renting->comment = $faker->text($maxNbChars = 200);
+                $renting->start = $date;
+                $renting->end = $dateEnd;
+                $renting->save();             
+                
+                // Se guarda la relacion muchos a muchos de alquiler y reserva
+                $reserve->renting()->attach($renting->id);
 
                 // Se genera una factura del pago realizado
                 $invoice = new Invoice;

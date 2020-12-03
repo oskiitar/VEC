@@ -27,13 +27,14 @@ Route::get('contacto', function () {
 
 Route::post('email','MailController@sendMail')->name('email');
 
-Route::get('reservar', function () {
-    return view('reservar');
-})->middleware('auth','verified');
-
-Route::get('admin', 'AdminController@show')->middleware('auth','admin','verified');
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'reservar'], function () {
+    Route::get('/', 'ReserveController@show');
+    Route::get('pagar', 'PayController@show')->name('pago');
+    Route::post('horario', 'ReserveController@loadSchedule');
+});
 
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
+    Route::get('/', 'AdminController@show');
     Route::get('client', 'AdminController@loadClients');
     Route::get('employee', 'AdminController@loadEmployees');
     Route::post('client', 'AdminController@clientAdd');
