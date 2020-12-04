@@ -12,7 +12,7 @@ class ReserveController extends Controller
 {
     public function show()
     {
-        return view('reservar');
+        return view('reservas.reservar');
     }
 
     public function loadSchedule(Request $request){

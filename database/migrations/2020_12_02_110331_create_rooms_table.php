@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRentingsTable extends Migration
+class CreateRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateRentingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rentings', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->string('comment', 255)->nullable();
-            $table->dateTime('start');
-            $table->dateTime('end');
-            $table->unsignedInteger('room_id');
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->string('type');
+            $table->string('description');
+            $table->double('price');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateRentingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rentings');
+        Schema::dropIfExists('rooms');
     }
 }

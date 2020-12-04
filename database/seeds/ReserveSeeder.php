@@ -67,6 +67,7 @@ class ReserveSeeder extends Seeder
                 $renting->comment = $faker->text($maxNbChars = 200);
                 $renting->start = $date;
                 $renting->end = $dateEnd;
+                $renting->room_id = random_int(1,7);
                 $renting->save();             
                 
                 // Se guarda la relacion muchos a muchos de alquiler y reserva

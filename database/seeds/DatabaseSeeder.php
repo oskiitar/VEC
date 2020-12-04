@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(PaywaySeeder::class);
+        $this->call(RoomSeeder::class);
         $this->call(ReserveSeeder::class);
     }
 }

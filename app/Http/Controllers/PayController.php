@@ -8,6 +8,6 @@ class PayController extends Controller
 {
     public function show()
     {
-        return view('pago');
+        return view('reservas.pago');
     }
 }

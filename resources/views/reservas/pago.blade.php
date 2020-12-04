@@ -30,17 +30,11 @@
             }
         });
 
-        let data = sessionStorage;
-        let date = '';
-        $.each(data, function(index, value){
-            if (!isNaN(index)){
-                date += new Date(value) + '<br/>'
-                console.log(date.toLocaleString());
-            }
+        let data = Object.entries(sessionStorage);
+
+        data.forEach(item => {
+            $('#data-pay').append(item +'<br/>')
         });
-
-        $('#data-pay').html(date);
-
 
     </script>
 @endsection

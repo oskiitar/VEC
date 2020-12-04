@@ -1,8 +1,37 @@
-function validateDate() {
+var roomSelected = 1;
 
-    sessionStorage.clear(); // Vacia la variable de session
+function val(value){
+    roomSelected = value;
+}
+
+function clean() {
     $('#btn-reserve').attr('disabled', true).removeClass('btn-success').addClass('btn-outline-secondary'); // Restaura boton
     $('.btn-secondary').removeClass('btn-danger').removeClass('btn-success').removeAttr('disabled'); // Restaura botones
+    $('#schedules').attr('hidden', true); // Oculta el horario
+    $('#reserve-date-error').empty();
+}
+
+function showEr(value) {
+    roomSelected = value;
+    $('#list-er-room').removeAttr('hidden');
+    $('#list-vr-room').attr('hidden', true);
+    $('#reserve-date').val('');
+    clean();
+}
+
+function showVr(value) {
+    roomSelected = value;
+    $('#list-er-room').attr('hidden', true);
+    $('#list-vr-room').removeAttr('hidden');
+    $('#reserve-date').val('');
+    clean();
+}
+
+function validate() {
+    console.log(roomSelected);
+    clean();
+
+    sessionStorage.clear(); // Vacia la variable de session
 
     let date = new Date($('#reserve-date').val()); // Fecha seleccionada
     let lastDate = new Date();
@@ -41,16 +70,17 @@ function changeButtons(data) {
 
 function selectSchedule(n) {
     let date = new Date($('#reserve-date').val()); // Fecha seleccionada
+    date.setHours(n);
 
     if ($('#btn' + n).hasClass('btn-success')) {
         $('#btn' + n).removeClass('btn-success');
-        if (sessionStorage.getItem(date.setHours(n))) {
-            sessionStorage.removeItem(date.setHours(n));
+        if (sessionStorage.getItem(date)) {
+            sessionStorage.removeItem(date);
         }
 
     } else {
         $('#btn' + n).addClass('btn-success');
-        sessionStorage.setItem(date.setHours(n), date.toJSON());
+        sessionStorage.setItem(date, 'room_' + roomSelected);
     }
 
     if (sessionStorage.length > 0) {

@@ -20,4 +20,8 @@ class Renting extends Model
     public function reserve(){
         return $this->belongsToMany('App\Reserve', 'renting_reserve', 'renting_id');
     }
+
+    public function room(){
+        return $this->hasMany('App\Room', 'room_id');
+    }
 }
