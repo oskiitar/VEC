@@ -29,14 +29,16 @@ Route::post('email','MailController@sendMail')->name('email');
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'reservar'], function () {
     Route::get('/', 'ReserveController@show');
-    Route::get('pagar', 'PayController@show')->name('pago');
     Route::post('horario', 'ReserveController@loadSchedule');
     Route::get('room', 'ReserveController@getRooms');
-    Route::get('pagar/{id}', 'ReserveController@loadRoom');
+    Route::get('room/{id}', 'ReserveController@loadRoom');
+    Route::get('pagar', 'PayController@show')->name('pago');
+    Route::get('metodos', 'PayController@getPayment');
+    Route::post('pagar', 'PayController@payReserve');
 });
 
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
-    Route::get('/', 'AdminController@show');
+    Route::get('/', 'AdminController@show')->name('admin');
     Route::get('client', 'AdminController@loadClients');
     Route::get('employee', 'AdminController@loadEmployees');
     Route::post('client', 'AdminController@clientAdd');

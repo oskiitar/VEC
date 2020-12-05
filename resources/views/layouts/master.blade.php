@@ -19,16 +19,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/estilo.css') }}">
-    
+
     @section('head')
-    @show  
+    @show
 
     <!-- jQuery -->
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <!-- popper -->
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <!-- Bootstrap js -->
-    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>    
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
 
 </head>
 
@@ -65,7 +65,18 @@
         @include('layouts.footer')
     @show
 
-    @yield('script')
+    @section('script')
+        <script type="text/javascript">
+            let dataSession = Object.entries(sessionStorage);
+
+            $(document).ready(function() {
+                if (dataSession.length > 0) {
+                    $('.badge').html(dataSession.length);
+                }
+            });
+
+        </script>
+    @show
 
 </body>
 

@@ -1,3 +1,30 @@
+// Carga del token de session en cabecera AJAX
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$(function() { // Funcion que se ejecuta cuando carga el documento
+    selectClients();
+});
+
+/* LLamadas AJAX con callback de funcion que carga los modelos
+   en tablas */
+
+function selectClients() {
+    loadData('client', htmlData);
+}
+
+function selectEmployees() {
+    loadData('employee', htmlData);
+}
+
+function selectReservations() {
+    loadData('reservation', htmlData);
+}
+
 /******************** Creacion ********************************/
 
 // Envio del form por post mediante AJAX

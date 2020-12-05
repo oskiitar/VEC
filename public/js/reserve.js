@@ -1,3 +1,15 @@
+// Carga del token de session en cabecera AJAX
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$(function () { // Funcion que se ejecuta cuando carga el documento
+    getRooms();
+});
+
 roomSelected = null;
 
 rooms = null;
@@ -6,7 +18,7 @@ function selectRoom(id) {
     roomSelected = parseInt(id);
 
     let room = rooms.find(obj => obj.id === roomSelected);
-    let html = '<cite>'+room.description+'</cite><span class="ml-3">--- Precio / hora..... '+room.price.toFixed(2)+'€</span>';
+    let html = '<cite>' + room.description + '</cite><span class="ml-3">--- Precio / hora --- ' + room.price.toFixed(2) + '€</span>';
 
     $('#room-specs').html(html);
     validate();
@@ -67,17 +79,17 @@ function validate() {
             $('#reserve-date-error').html('La fecha debe ser posterior al dia de ayer');
             $('#schedules').attr('hidden', true);
 
-        } else if (date.getDay() !== 1) { // Excepto los lunes
+        } else if (date.getDay() !== 1) { // Todos excepto los lunes
             $('#reserve-date-error').empty();
             $('#schedules').removeAttr('hidden');
 
             if (date.getDay() == 0 || date.getDay() == 5 || date.getDay() == 6) {
                 $('#btn22').removeAttr('hidden');
             } else {
-                $('#btn22').attr('hidden', true);
+                $('#btn22').attr('hidden', true); // Solo fines de semana
             }
 
-            getSchedule(date.getDate());
+            getSchedule(date.getDate()); // Obtiene el horario
 
         } else {
             $('#reserve-date-error').html('Lunes cerrado por descanso');
@@ -98,9 +110,8 @@ function changeButtons(data) {
 function selectSchedule(n) {
     dateForm = $('#reserve-date').val();
 
-    if (dateForm) {
-        let date = new Date(dateForm); // Fecha seleccionada
-        date.setHours(n);
+    if (dateForm) {        
+        let date = moment(dateForm + ' ' + n + ':00').format('YYYY-MM-DD HH:mm'); // Fecha seleccionada        
 
         if ($('#btn' + n).hasClass('btn-success')) {
             $('#btn' + n).removeClass('btn-success');

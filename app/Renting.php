@@ -14,7 +14,7 @@ class Renting extends Model
      * @var array
      */
     protected $fillable = [
-        'comment', 'start', 'end', 'penalty'
+        'start', 'end'
     ];
 
     public function reserve(){

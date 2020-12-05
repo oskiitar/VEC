@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 @section('content')
-    <div class="m-default">
+    <div class="m-min">
         <div class="container h-50">
             <div class="row justify-content-center">
                 <div class="col-lg-3">
@@ -67,28 +67,17 @@
                                         disabled>{{ __('Reserve') }}</a>
                                 </div>
                             </div>
-                        </div>                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
 
     @section('script')
         <script src="{{ asset('alertify/alertify.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/reserve.js') }}" type="text/javascript"></script>
-        <script type="text/javascript">
-            // Carga del token de session en cabecera AJAX
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $(document).ready(function() {
-                getRooms();
-            });
-
-        </script>
+        <script src="{{ asset('js/moment.js') }}"></script>
     @endsection
+@endsection
+@section('footer')
+@endsection

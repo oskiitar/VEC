@@ -15,7 +15,6 @@ class CreateRentingsTable extends Migration
     {
         Schema::create('rentings', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->string('comment', 255)->nullable();
             $table->dateTime('start');
             $table->dateTime('end');
             $table->unsignedInteger('room_id');

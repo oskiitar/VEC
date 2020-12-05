@@ -64,7 +64,6 @@ class ReserveSeeder extends Seeder
                 
                 // Se crea un alquiler
                 $renting = new Renting;
-                $renting->comment = $faker->text($maxNbChars = 200);
                 $renting->start = $date;
                 $renting->end = $dateEnd;
                 $renting->room_id = random_int(1,7);
