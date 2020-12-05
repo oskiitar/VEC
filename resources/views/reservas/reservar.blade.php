@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('titulo', 'Reservar')
 @section('head')
-    <link rel="stylesheet" href="alertify/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
 @endsection
 @section('content')
 @section('content')
@@ -11,25 +11,18 @@
                 <div class="col-lg-3">
                     <div class="list-group" id="list-tab" role="tablist">
                         <a class="list-group-item list-group-item-action active" id="list-er-list" data-toggle="list"
-                            href="#list-er" role="tab" aria-controls="er" onclick="showEr()">Sala
+                            href="#list-er" role="tab" aria-controls="er" onclick="showEr($('#er-room').val())">Sala
                             Escape Room</a>
                         <a class="list-group-item list-group-item-action" id="list-vr-list" data-toggle="list"
                             href="#list-vr" role="tab" aria-controls="vr" onclick="showVr($('#vr-room').val())">Sala
                             Realidad Virtual</a>
                     </div>
                     <div id="list-er-room" class="list-group mt-4">
-                        <select id="er-room" class="custom-select" onchange="val(this.value)" onselect="validate(this.value)">
-                            <option value="1">Sala Historia</option>
-                            <option value="2">Sala Futuro</option>
-                            <option value="3">Sala Terror</option>
+                        <select id="er-room" class="custom-select" onchange="selectRoom(this.value)">
                         </select>
                     </div>
                     <div id="list-vr-room" class="list-group mt-4" hidden>
-                        <select id="vr-room" class="custom-select" onchange="val(this.value)" onselect="validate(this.value)">
-                            <option value="4">Sala Aventura</option>
-                            <option value="5">Sala Espacio</option>
-                            <option value="6">Sala Supervivencia</option>
-                            <option value="7">Sala Terror</option>
+                        <select id="vr-room" class="custom-select" onchange="selectRoom(this.value)">
                         </select>
                     </div>
                 </div>
@@ -37,7 +30,8 @@
                     <div class="card">
                         <div class="card-header bg-primary text-white">{{ __('Reserve') }}</div>
 
-                        <div class="card-body pb-5 mb-5">
+                        <div class="card-body pb-3">
+                            <div id='room-specs' class="col-lg-12 mt-3 mb-5"></div>
                             <div class="form-group row">
                                 <label for="reserve-date"
                                     class="col-lg-4 col-form-label text-md-right">{{ __('Date-reserve') }}</label>
@@ -73,17 +67,16 @@
                                         disabled>{{ __('Reserve') }}</a>
                                 </div>
                             </div>
-                        </div>
+                        </div>                            
                     </div>
-                    <div id="loading" class="d-flex justify-content-center mt-5"></div>
                 </div>
             </div>
         </div>
     @endsection
 
     @section('script')
-        <script src="{{ asset('alertify/alertify.js') }}"></script>
-        <script src="{{ asset('js/reserve.js') }}"></script>
+        <script src="{{ asset('alertify/alertify.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/reserve.js') }}" type="text/javascript"></script>
         <script type="text/javascript">
             // Carga del token de session en cabecera AJAX
 
@@ -91,6 +84,10 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $(document).ready(function() {
+                getRooms();
             });
 
         </script>

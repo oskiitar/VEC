@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('titulo', 'Admin')
 @section('head')
-    <link rel="stylesheet" href="alertify/css/alertify.css">
-    <link rel="stylesheet" type="text/css" href="dataTables/datatables.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dataTables/datatables.css') }}">
 @endsection
 @section('content')
     <div class="m-min">
@@ -43,10 +43,6 @@
     <script src="{{ asset('js/admin.js') }}"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            selectClients();
-        });
-
         // Carga del token de session en cabecera AJAX
 
         $.ajaxSetup({
@@ -55,8 +51,12 @@
             }
         });
 
+        $(document).ready(function() {
+            selectClients();
+        });
+
         /* LLamadas AJAX con callback de funcion que carga los modelos
-       en tablas */
+           en tablas */
 
         function selectClients() {
             loadData('client', htmlData);

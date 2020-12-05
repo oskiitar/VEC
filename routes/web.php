@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'reservar'], fun
     Route::get('/', 'ReserveController@show');
     Route::get('pagar', 'PayController@show')->name('pago');
     Route::post('horario', 'ReserveController@loadSchedule');
+    Route::get('room', 'ReserveController@getRooms');
+    Route::get('pagar/{id}', 'ReserveController@loadRoom');
 });
 
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
