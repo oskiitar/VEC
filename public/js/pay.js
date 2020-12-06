@@ -6,6 +6,31 @@ $.ajaxSetup({
     }
 });
 
+var payment = null; // Metodo de pago
+
+var total = 0; // Total del pago
+
+var cookie_user = null; // Cookie de usuario
+
+$(function () { // Funcion que se ejecuta cuando carga el documento
+
+    if (basket.length > 0) {
+
+        cookie_user = 'reserva/' + user;
+
+        if (!getCookie(cookie_user)) {
+            let date = moment().format('YYYY-MM-DD HH:mm');
+            setCookie(cookie_user, date, 1);
+        }
+
+        getReserve();
+        getPayment();
+
+    } else {
+        clear();
+    }
+});
+
 function setCookie(cname, cvalue, exdays) { // Funcion que guarda cookies
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -30,41 +55,16 @@ function getCookie(cname) { // Funcion que recupera cookies
 }
 
 function delete_cookie(name) {
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  }
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 
-var reserve = Object.entries(sessionStorage); // Array que contiene toda la reserva
-
-var payment = null; // Metodo de pago
-
-var total = 0; // Total del pago
-
-$(function () { // Funcion que se ejecuta cuando carga el documento
-    if (reserve.length > 0) {
-        $('.badge').html(reserve.length);
-
-        if (!reserve.find(array => typeof array === 'object')) {
-            reserve.push(new Date());
-        }
-
-        if (!getCookie('reserva')) {
-            let date = moment().format('YYYY-MM-DD HH:mm');
-            setCookie('reserva', date, 1);
-        }
-
-        getReserve();
-        getPayment();
-
-    } else {
-        $('#btn-pay').attr('hidden', true);
-        $('#selectPay').attr('hidden', true);
-        $('#noReserves').html('No hay nada por aqui...');
-    }
-});
+function selectPay(value) {
+    payment = value;
+}
 
 async function getReserve() {
-    let url = 'room/' + reserve[0][1];
-    total = 0; // precio total de la reserva
+    let url = 'room/' + basket[0][1];
+    total = 0; // resetea precio total de la reserva
     let data = await $.ajax({
         type: "GET",
         url: url,
@@ -77,7 +77,7 @@ async function getReserve() {
         }
     });
 
-    reserve.forEach(item => {
+    basket.forEach(item => {
         let date = new Date(item[0]);
         total += data.price;
         let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -89,6 +89,34 @@ async function getReserve() {
     let text = '<p>Total a pagar..... ' + total.toFixed(2) + '€</p>'
 
     $('#total-pay').append(text);
+}
+
+function removeStorage() {
+    let reserveDel = Object.entries(sessionStorage);
+
+    for (let i = 0; i < reserveDel.length; i++) {
+        let split = reserveDel[i][0].split('/');
+
+        if (split[0] === String(user)) {
+            sessionStorage.removeItem(user + '/' + split[1]);
+        }
+    }
+}
+
+function clear(){
+    $('#data-pay').empty();
+    $('#total-pay').empty();
+    $('#btn-pay').attr('hidden', true);
+    $('#btn-empty').attr('hidden', true);
+    $('#selectPay').attr('hidden', true);
+    $('#noReserves').html('No hay nada por aqui...');
+    $('.badge').empty();
+}
+
+function empty() {
+    removeStorage();
+    delete_cookie(cookie_user);
+    clear();
 }
 
 async function getPayment() {
@@ -112,32 +140,31 @@ async function getPayment() {
     });
 }
 
-function selectPay(value) {
-    payment = value;
-}
-
 /**
  * 
  * @param {*} user 
  */
-async function pay(user) {
+async function pay() {
     let data = {
         client: user,
         payway: payment,
         total: total,
-        rentings: reserve,
-        dateReserve: getCookie('reserva')
+        rentings: basket,
+        dateReserve: getCookie(cookie_user)
     }
-
-    console.log(data);
 
     await $.ajax({
         type: "POST",
         url: "/reservar/pagar",
         data: data,
-        success: function (res) {
-            console.log(res);
-            alertify.success('La reserva se realizado con exito');
+        success: function () {
+            alertify.success('La reserva se ha realizado con exito');
+            $('#btn-pay').attr('hidden', true);
+            removeStorage();
+            delete_cookie(cookie_user);
+            setTimeout(function () {
+                $('#btn-index').trigger('click');
+            }, 2000);
         },
         error: function (e) {
             console.log(e.responseText);

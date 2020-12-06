@@ -41,6 +41,7 @@
                         @endguest
 
                         @auth
+                            <input id="user_id" value="{{ Auth::user()->id }}" hidden>
                             <li class="nav-item dropdown">                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -55,7 +56,7 @@
                                         </a>
                                     @endif
 
-                                    <a class="dropdown-item" href="{{ route('pago') }}">Mis reservas <span class="badge badge-light"></span></a>
+                                    <a class="dropdown-item" href="{{ route('pago') }}">Mi carrito<span class="badge badge-light"></span></a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

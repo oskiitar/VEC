@@ -66,16 +66,7 @@
     @show
 
     @section('script')
-        <script type="text/javascript">
-            let dataSession = Object.entries(sessionStorage);
-
-            $(document).ready(function() {
-                if (dataSession.length > 0) {
-                    $('.badge').html(dataSession.length);
-                }
-            });
-
-        </script>
+        <script src="{{ asset('js/session.js') }}" type="text/javascript"></script>
     @show
 
 </body>

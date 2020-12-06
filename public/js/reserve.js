@@ -6,13 +6,15 @@ $.ajaxSetup({
     }
 });
 
+var roomSelected = null;
+
+var rooms = null;
+
+var itemSelected = {}; // Reservas seleccionadas
+
 $(function () { // Funcion que se ejecuta cuando carga el documento
     getRooms();
 });
-
-roomSelected = null;
-
-rooms = null;
 
 function selectRoom(id) {
     roomSelected = parseInt(id);
@@ -65,8 +67,6 @@ function loadRooms(data) {
 function validate() {
     clean();
 
-    sessionStorage.clear(); // Vacia la variable de session
-
     let dateForm = $('#reserve-date').val();
 
     if (dateForm) {
@@ -110,26 +110,34 @@ function changeButtons(data) {
 function selectSchedule(n) {
     dateForm = $('#reserve-date').val();
 
-    if (dateForm) {        
+    if (dateForm) {
         let date = moment(dateForm + ' ' + n + ':00').format('YYYY-MM-DD HH:mm'); // Fecha seleccionada        
 
         if ($('#btn' + n).hasClass('btn-success')) {
             $('#btn' + n).removeClass('btn-success');
-            if (sessionStorage.getItem(date)) {
-                sessionStorage.removeItem(date);
+            if (itemSelected[(user + '/' + date)]){
+                delete itemSelected[(user + '/' + date)];
             }
-
+            
         } else {
             $('#btn' + n).addClass('btn-success');
-            sessionStorage.setItem(date, roomSelected);
+            itemSelected[(user + '/' + date)] = roomSelected;
         }
 
-        if (sessionStorage.length > 0) {
+        if (Object.keys(itemSelected).length > 0) {
             $('#btn-reserve').removeAttr('disabled').removeClass('btn-outline-secondary').addClass('btn-success');
         } else {
             $('#btn-reserve').attr('disabled', true).removeClass('btn-success').addClass('btn-outline-secondary');
         }
     }
+}
+
+function setReserve() {
+    for (const key in itemSelected){
+        sessionStorage.setItem(key, itemSelected[key]);
+    }   
+
+    $('#btn-pay').trigger('click');
 }
 
 async function getSchedule(date) {

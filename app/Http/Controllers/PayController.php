@@ -57,8 +57,8 @@ class PayController extends Controller
 
                 // Se crea un alquiler
                 $renting = new Renting;
-                $renting->start = new Carbon($data[0]);
-                $renting->end = $renting->start->addHour();
+                $renting->start = $data[0];
+                $renting->end = Carbon::parse($data[0])->addHour();
                 $renting->room_id = $data[1];
                 $renting->save();             
 

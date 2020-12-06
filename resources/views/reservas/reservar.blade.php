@@ -63,8 +63,9 @@
                                         onclick="selectSchedule(22)">22:00 - 23:00</button>
                                 </div>
                                 <div class="col-lg-8 mx-auto mt-5">
-                                    <a id="btn-reserve" href="{{ route('pago') }}" class="btn btn-outline-secondary"
-                                        disabled>{{ __('Reserve') }}</a>
+                                <button id="btn-reserve" class="btn btn-outline-secondary" onclick="setReserve()"
+                                        disabled>{{ __('Reserve') }}</button>
+                                <button id="btn-pay" onclick="window.location.href='{{ route('pago') }}'" hidden></button>
                                 </div>
                             </div>
                         </div>
@@ -74,9 +75,10 @@
         </div>
 
     @section('script')
+        <script src="{{ asset('js/session.js') }}" type="text/javascript"></script>
         <script src="{{ asset('alertify/alertify.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/moment.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/reserve.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('js/moment.js') }}"></script>
     @endsection
 @endsection
 @section('footer')
