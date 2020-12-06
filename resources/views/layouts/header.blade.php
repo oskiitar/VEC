@@ -44,17 +44,22 @@
                             <input id="user_id" value="{{ Auth::user()->id }}" hidden>
                             <li class="nav-item dropdown">                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="badge badge-light"></span><span class="caret"></span>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>                                       
+                                    <span><img class="border border-light bg-light avatar rounded-circle mt-n2" alt="Imagen de perfil" src="{{ asset('img/profile/user-default.png') }}"></span>                                                                                  
+                                    <span class="badge badge-light"></span> 
                                 </a>
-
+                                
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <h5 class="ml-4">{{ Auth::user()->name }}</h5>
 
                                     @if (Auth::user()->isAdmin())
                                         <a class="dropdown-item" href="{{ route('admin') }}">
-                                            Panel de administrador
+                                            Administracion
                                         </a>
-                                    @endif
+                                    @endif                                  
+
+                                    <a class="dropdown-item" href="/perfil">Mi perfil</a>
 
                                     <a class="dropdown-item" href="{{ route('pago') }}">Mi carrito<span class="badge badge-light"></span></a>
 

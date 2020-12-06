@@ -93,4 +93,33 @@ class RegisterController extends Controller
         return $user;
 
     }
+
+    /**
+     * Edit a user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function update(array $data)
+    {
+        $user = DB::transaction(function () use ($data) {
+            $user = User::create([
+                'name' => $data['name'],
+                'surname' => $data['surname'],
+                'birthday' => $data['birthday'],
+                'tel' => $data['tel'],
+                'password' => Hash::make($data['password']),
+            ]);
+
+                $client = new Client;
+                $client->address = $data['address'];
+                $client->created_at = now();
+    
+                $user->client()->save($client);                  
+
+            return $user;
+        });
+
+        return $user;
+    }
 }

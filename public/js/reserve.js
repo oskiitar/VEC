@@ -29,7 +29,6 @@ function selectRoom(id) {
 function clean() {
     $('#btn-reserve').attr('disabled', true).removeClass('btn-success').addClass('btn-outline-secondary'); // Restaura boton
     $('.btn-secondary').removeClass('btn-danger').removeClass('btn-success').removeAttr('disabled'); // Restaura botones
-    $('#schedules').attr('hidden', true); // Oculta el horario
     $('#reserve-date-error').empty(); // Limpia los errores
 }
 
@@ -65,31 +64,32 @@ function loadRooms(data) {
 }
 
 function validate() {
-    clean();
+    clean();    
 
     let dateForm = $('#reserve-date').val();
 
     if (dateForm) {
 
-        let date = new Date(dateForm); // Fecha seleccionada
+        let dateSelected = new Date(dateForm);
+        
         let lastDate = new Date();
         lastDate.setDate(lastDate.getDate() - 1); // ayer
 
-        if (date < lastDate) { // A partir de hoy
+        if (dateSelected < lastDate) { // A partir de hoy
             $('#reserve-date-error').html('La fecha debe ser posterior al dia de ayer');
             $('#schedules').attr('hidden', true);
 
-        } else if (date.getDay() !== 1) { // Todos excepto los lunes
+        } else if (dateSelected.getDay() !== 1) { // Todos excepto los lunes
             $('#reserve-date-error').empty();
             $('#schedules').removeAttr('hidden');
 
-            if (date.getDay() == 0 || date.getDay() == 5 || date.getDay() == 6) {
+            if (dateSelected.getDay() == 0 || dateSelected.getDay() == 5 || dateSelected.getDay() == 6) {
                 $('#btn22').removeAttr('hidden');
             } else {
                 $('#btn22').attr('hidden', true); // Solo fines de semana
             }
 
-            getSchedule(date.getDate()); // Obtiene el horario
+            getSchedule(dateSelected.getDate()); // Obtiene el horario
 
         } else {
             $('#reserve-date-error').html('Lunes cerrado por descanso');
@@ -100,7 +100,7 @@ function validate() {
 
 function changeButtons(data) {
     $.each(data, function (key, value) {
-        if (value.start) {
+        if (value.start && value.room_id === roomSelected) {
             let hour = new Date(value.start).getHours();
             $('#btn' + hour).addClass('btn-danger').attr('disabled', true);
         }

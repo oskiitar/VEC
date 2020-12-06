@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('titulo', 'Pago')
+@section('titulo', 'Mi carrito')
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
 @endsection
