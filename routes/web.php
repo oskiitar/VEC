@@ -27,7 +27,7 @@ Route::get('contacto', function () {
 
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'perfil'], function () {
     Route::get('/', 'ProfileController@showProfile');
-    Route::post('actualizar', 'Auth\RegisterController@update')->name('profile_update');
+    Route::post('actualizar', 'ProfileController@update')->name('profile_update');
     Route::get('user/{id}', 'ProfileController@loadUser');
 });
 

@@ -12,17 +12,17 @@ $(function () { // Funcion que se ejecuta cuando carga el documento
 });
 
 function setUser(data) {
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
     $('#name').val(data.name);
     $('#surname').val(data.surname);
-    $('#birthday').val(data.birthday);
+    $('#birthday').val(new Date(data.birthday).toLocaleDateString('es-ES', options));
     $('#tel').val(data.tel);
 
-    if (data.client.address){
+    if (data.client !== undefined){        
         $('#address').val(data.client.address);
-    }
-    
-    if (data.client.address){
-        $('#address').val(data.client.address);
+    } else {
+        $('#address-group').empty();
     }
 }
 
@@ -40,6 +40,6 @@ async function findUser(id) {
     });
 }
 
-async function updateUser() {
-
+function update(data){
+    console.log(data);
 }

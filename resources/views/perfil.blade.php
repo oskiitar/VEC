@@ -12,7 +12,7 @@
                             <img src="{{ asset('img/profile/user-default.png') }}" alt="Imagen de perfil" />
                             <div class="file btn btn-lg btn-primary">
                                 Cambiar foto
-                                <input type="file" name="file">
+                                <input type="file">
                             </div>
                         </div>
 
@@ -35,7 +35,7 @@
                             </h6>
                         </div>
 
-                        <input id="user-id" value="{{ Auth::user()->id }}" hidden disabled>
+                        <input id="user-id" type="number" name="id" value="{{ Auth::user()->id }}" hidden>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -71,15 +71,9 @@
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthday" type="date"
-                                    class="form-control @error('birthday') is-invalid @enderror" name="birthday"
-                                    value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
-
-                                @error('birthday')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="birthday" type="text"
+                                    class="form-control @error('birthday') is-invalid @enderror"
+                                    value="{{ old('birthday') }}" autocomplete="birthday" readonly>
                             </div>
                         </div>
 
@@ -98,7 +92,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div id="address-group" class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
@@ -114,11 +108,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('New Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    class="form-control @error('password') is-invalid @enderror" name="password"
                                     autocomplete="new-password">
 
                                 @error('password')
@@ -135,7 +129,7 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control"
-                                    name="password_confirmation" required autocomplete="new-password">
+                                    name="password_confirmation" autocomplete="new-password">
                             </div>
                         </div>
 
