@@ -1,9 +1,5 @@
 @extends('layouts.master')
 @section('titulo', 'Mi carrito')
-@section('head')
-    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
-@endsection
-@section('content')
 @section('content')
     <div class="m-min">
         <div class="container-md h-50">
@@ -36,8 +32,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/session.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('alertify/alertify.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/moment.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/pay.js') }}" type="text/javascript"></script>
 @endsection

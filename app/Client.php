@@ -22,6 +22,6 @@ class Client extends User
     }
 
     public function reserve(){
-        return $this->hasMany('App\Reserve', 'client_id');
+        return $this->hasMany('App\Reserve', 'client_id', 'user_id');
     }
 }

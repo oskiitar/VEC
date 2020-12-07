@@ -25,14 +25,20 @@ Route::get('contacto', function () {
     return view('contacto.contacto');
 });
 
+Route::post('email','MailController@sendMail')->name('email');
+
+
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'perfil'], function () {
     Route::get('/', 'ProfileController@showProfile');
     Route::post('actualizar', 'ProfileController@update')->name('profile_update');
     Route::get('user/{id}', 'ProfileController@loadUser');
 });
 
-
-Route::post('email','MailController@sendMail')->name('email');
+Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'reservas'], function () {
+    Route::get('/', 'ReserveController@showReserves');
+    Route::get('/{id}', 'ReserveController@loadReserves');
+    Route::get('pdf/{id}', 'ReserveController@exportPDF');
+});
 
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'reservar'], function () {
     Route::get('/', 'ReserveController@show');

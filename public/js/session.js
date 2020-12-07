@@ -2,6 +2,14 @@ var reserve = Object.entries(sessionStorage);
 var basket = [];
 var user = $('#user_id').val();
 
+// Carga del token de session en cabecera AJAX
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $(function () {
 
     if (reserve.length > 0) {

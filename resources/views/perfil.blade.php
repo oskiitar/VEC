@@ -35,8 +35,6 @@
                             </h6>
                         </div>
 
-                        <input id="user-id" type="number" name="id" value="{{ Auth::user()->id }}" hidden>
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -140,8 +138,6 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ asset('js/session.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('alertify/alertify.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/profile.js') }}" type="text/javascript"></script>
 @endsection
 @section('footer')

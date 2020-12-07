@@ -22,6 +22,6 @@ class Renting extends Model
     }
 
     public function room(){
-        return $this->hasMany('App\Room', 'room_id');
+        return $this->belongsTo('App\Room');
     }
 }

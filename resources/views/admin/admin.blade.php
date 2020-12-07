@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('titulo', 'Admin')
-@section('head')
-    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
+@section('link')
     <link rel="stylesheet" type="text/css" href="{{ asset('dataTables/datatables.css') }}">
 @endsection
 @section('content')
@@ -37,9 +36,8 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('js/session.js') }}"></script>
     <script src="{{ asset('dataTables/datatables.js') }}"></script>
-    <script src="{{ asset('alertify/alertify.js') }}"></script>
-    <script src="{{ asset('js/adminAjax.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 
     <script type="text/javascript">

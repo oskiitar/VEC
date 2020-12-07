@@ -1,14 +1,5 @@
-// Carga del token de session en cabecera AJAX
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 $(function () { // Funcion que se ejecuta cuando carga el documento
-    let id = $('#user-id').val();
-    findUser(id);
+    findUser(user);
 });
 
 function setUser(data) {

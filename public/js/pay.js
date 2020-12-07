@@ -1,11 +1,3 @@
-// Carga del token de session en cabecera AJAX
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 var payment = null; // Metodo de pago
 
 var total = 0; // Total del pago
@@ -13,7 +5,7 @@ var total = 0; // Total del pago
 var cookie_user = null; // Cookie de usuario
 
 $(function () { // Funcion que se ejecuta cuando carga el documento
-
+    
     if (basket.length > 0) {
 
         cookie_user = 'reserva/' + user;

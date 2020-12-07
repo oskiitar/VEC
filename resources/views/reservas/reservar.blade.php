@@ -1,9 +1,5 @@
 @extends('layouts.master')
 @section('titulo', 'Reservar')
-@section('head')
-    <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
-@endsection
-@section('content')
 @section('content')
     <div class="m-min">
         <div class="container h-50">
@@ -75,8 +71,6 @@
         </div>
 
     @section('script')
-        <script src="{{ asset('js/session.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('alertify/alertify.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/moment.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/reserve.js') }}" type="text/javascript"></script>
     @endsection

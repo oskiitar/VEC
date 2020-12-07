@@ -1,11 +1,3 @@
-// Carga del token de session en cabecera AJAX
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 var roomSelected = null;
 
 var rooms = null;
