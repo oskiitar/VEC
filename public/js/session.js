@@ -12,6 +12,11 @@ $.ajaxSetup({
 
 $(function () {
 
+    var url = location.pathname;
+    $('.nav-item.active').removeClass('active');
+    $('.nav-item a[href="' + url + '"]').parent().addClass('active');
+    $(this).parent().addClass('active').siblings().removeClass('active');
+
     if (reserve.length > 0) {
 
         reserve.forEach(item => {
@@ -20,7 +25,7 @@ $(function () {
                 item[0] = split[1];
                 basket.push(item);
             }
-        });        
+        });
     }
 
     if (basket.length > 0) {

@@ -34,13 +34,13 @@ Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'perfil'], function 
     Route::get('user/{id}', 'ProfileController@loadUser');
 });
 
-Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'reservas'], function () {
+Route::group(['middleware'=>['auth', 'verified', 'client'], 'prefix'=>'reservas'], function () {
     Route::get('/', 'ReserveController@showReserves');
     Route::get('/{id}', 'ReserveController@loadReserves');
     Route::get('pdf/{id}', 'ReserveController@exportPDF');
 });
 
-Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'reservar'], function () {
+Route::group(['middleware' => ['auth', 'verified', 'client'], 'prefix' => 'reservar'], function () {
     Route::get('/', 'ReserveController@show');
     Route::post('horario', 'ReserveController@loadSchedule');
     Route::get('room', 'ReserveController@getRooms');

@@ -22,14 +22,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item active mr-3">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item mr-3">
                     <a class="nav-link" href="/instalaciones">Instalaciones</a>
                 </li>
                 <li class="nav-item mr-3">
                     <a class="nav-link" href="/tarifas">Tarifas</a>
                 </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="/reservar">Reservar</a>
-                </li>
+                @auth
+                    @if (!Auth::user()->isAdmin())
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="/reservar">Reservar</a>
+                        </li>
+                    @endif
+                @endauth
                 <li class="nav-item mr-3">
                     <a class="nav-link" href="/contacto">Contacto</a>
                 </li>
@@ -53,23 +60,24 @@
                                     
                                     <h5 class="ml-4">{{ Auth::user()->name }}</h5>
 
+                                    <a class="dropdown-item" href="/perfil">Mi perfil</a>
+
                                     @if (Auth::user()->isAdmin())
                                         <a class="dropdown-item" href="{{ route('admin') }}">
-                                            Administracion
+                                            Mi administracion
                                         </a>
-                                    @endif                                  
-
-                                    <a class="dropdown-item" href="/perfil">Mi perfil</a>
+                                    @else
 
                                     <a class="dropdown-item" href="{{ route('pago') }}">Mi carrito<span class="badge badge-light"></span></a>
 
                                     <a class="dropdown-item" href="/reservas">Mis reservas</a>
 
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
