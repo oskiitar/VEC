@@ -23,7 +23,7 @@
                 <div class="col-12 col-lg-6">
                     <figure>
                         <div class="card">
-                            <div class="card-header bg-success text-white">
+                            <div class="card-header bg-primary text-white">
                                 <figcaption>Plano del local</figcaption>
                             </div>
                             <div class="card-body">

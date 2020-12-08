@@ -1,20 +1,23 @@
-$(function() { // Funcion que se ejecuta cuando carga el documento
+$(function () { // Funcion que se ejecuta cuando carga el documento
     selectClients();
 });
 
-/* LLamadas AJAX con callback de funcion que carga los modelos
-   en tablas */
-
 function selectClients() {
+    $('.btn-outline-primary').removeClass('active');
+    $('#btn-client').addClass('active');
     loadData('client', htmlData);
 }
 
 function selectEmployees() {
+    $('.btn-outline-primary').removeClass('active');
+    $('#btn-employee').addClass('active');
     loadData('employee', htmlData);
 }
 
-function selectReservations() {
-    loadData('reservation', htmlData);
+function selectQuerys(query) {
+    $('.btn-outline-primary').removeClass('active');
+    $('#btn-querys').addClass('active');
+    loadData(query, htmlData);
 }
 
 /******************** Creacion ********************************/
@@ -80,7 +83,7 @@ function editEmployee(employee) {
     $('#birthday-employee').val(employee.birthday);
     $('#tel-employee').val(employee.tel);
     $('#contract_start-employee').val(employee.employee.contract_start);
-    $('#contract_end-employee').val(employee.employee.contract_end);            
+    $('#contract_end-employee').val(employee.employee.contract_end);
     $('#is_admin-employee').prop('checked', employee.is_admin == 1 ? true : false);
 }
 
@@ -117,7 +120,9 @@ function submitEdit(model) {
 /**************** Borrado ****************************/
 
 function deleteUser(model, id) {
-    confirmDelete(model, id);
+    alertify.confirm('Eliminar', '¿Eliminar estos datos?'
+        , function () { deleteData(model, id) }
+        , function () { alertify.error('Cancelado') });
 }
 
 /************** Validaciones *************************/
@@ -204,86 +209,82 @@ function validateContract_end(dataStart, dataEnd, model) {
     return passed;
 }
 
+/************** AJAX *************************/
+
 async function loadData(model, callback) {
-	let url = 'admin/' + model;
+    let url = 'admin/' + model;
 
-	await $.ajax({
-		type: "GET",
-		url: url,
-		success: function (res) {
-			alertify.success('Datos cargados');
-			callback(res);
-		},
-		error: function (e) {
-			console.log(e.responseText);
-			alertify.error("Fallo el servidor");
-		}
-	});
+    await $.ajax({
+        type: "GET",
+        url: url,
+        success: function (res) {
+            alertify.success('Datos cargados');
+            callback(res);
+        },
+        error: function (e) {
+            console.log(e.responseText);
+            alertify.error("Fallo el servidor");
+        }
+    });
 }
 
-async function saveData(model, data, update) {	
-	let url = 'admin/' + model;
-	var res = null;
+async function saveData(model, data, update) {
+    let url = 'admin/' + model;
+    var res = null;
 
-	if (update){
-		url = 'admin/' + model +'/update';
-	}
+    if (update) {
+        url = 'admin/' + model + '/update';
+    }
 
-	await $.ajax({
-		type: "POST",
-		url: url,
-		data: data,
-		success: function () {
-			alertify.success('Datos guardados');			
-			res = true;
-		},
-		error: function (e) {
-			console.log(e.responseText);
-			alertify.error("Fallo el servidor");
-		}
-	});
+    await $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function () {
+            alertify.success('Datos guardados');
+            res = true;
+        },
+        error: function (e) {
+            console.log(e.responseText);
+            alertify.error("Fallo el servidor");
+        }
+    });
 
-	if (res) {
-		switch(model){
-			case 'client':
-				selectClients();
-				break;
-			case 'employee':
-				selectEmployees();
-		}
-	}
-}
-
-function confirmDelete(model, id) {
-	alertify.confirm('Eliminar', '¿Eliminar estos datos?'
-		, function () { deleteData(model, id) }
-		, function () { alertify.error('Cancelado') });
+    if (res) {
+        switch (model) {
+            case 'client':
+                selectClients();
+                break;
+            case 'employee':
+                selectEmployees();
+        }
+    }
 }
 
 async function deleteData(model, id) {
-	let url = 'admin/user/' + id;
-	var res = null;
+    let url = 'admin/user/' + id;
+    var res = null;
 
-	await $.ajax({
-		type: "GET",
-		url: url,
-		success: function () {
-			alertify.success('Datos eliminados');
-			res = true;
-		},
-		error: function (e) {
-			console.log(e.responseText);
-			alertify.error("Fallo el servidor");
-		}
-	});
+    await $.ajax({
+        type: "GET",
+        url: url,
+        success: function () {
+            alertify.success('Datos eliminados');
+            res = true;
+        },
+        error: function (e) {
+            console.log(e.responseText);
+            alertify.error("Fallo el servidor");
+        }
+    });
 
-	if (res) {
-		switch(model){
-			case 'client':
-				selectClients();
-				break;
-			case 'employee':
-				selectEmployees();
-		}
-	}
+    if (res) {
+        switch (model) {
+            case 'client':
+                selectClients();
+                break;
+            case 'employee':
+                selectEmployees();
+        }
+    }
 }

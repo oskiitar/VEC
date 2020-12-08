@@ -16,8 +16,8 @@
                         <div class="card-footer bg-primary text-white">
                             <p><strong>¡Oferta exclusiva!</strong></p>
                             <p>Disfruta de la máxima diversión de la mano de HTC Vive</p>
-                            <p>1 hora para hasta 4 jugadores</p>
-                            <p>Por tan sólo 60€</p>
+                            <p>1 hora hasta 4 jugadores</p>
+                            <p>A partir de 59,50€</p>
                         </div>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                         </div>
                         <div class="card-footer bg-primary text-white">
                             <p>¿Crees que puedes resolver el enigma?</p>
-                            <p>1 hora para hasta 8 jugadores</p>
-                            <p>Por tan sólo 50€</p>
+                            <p>1 hora hasta 8 jugadores</p>
+                            <p>A partir de 49,50€</p>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="deleteUser('client', {{ $client->id }})">
+                    <button class="btn btn-primary btn-sm" onclick="deleteUser('client', {{ $client->id }})">
                         <i class="fas fa-user-times"></i>
                     </button>
                 </td>

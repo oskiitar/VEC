@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/estilo.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/fix-bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('alertify/css/alertify.css') }}">
     @yield('link')
 

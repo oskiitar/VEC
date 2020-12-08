@@ -39,9 +39,11 @@
                 </div>
                 <div class="col-12 col-sm-4">
                     <div class="card bg-light mb-3">
-                        <div class="card-header bg-success text-white"><i class="fa fa-home mr-2"></i>{{ __('Address') }}
+                        <div class="card-header bg-primary text-white"></i>{{ __('Address') }}
                         </div>
                         <div class="card-body">
+                            <p><i class="fas fa-envelope mr-2"></i>info.virtualescapecoruna@gmail.com</p>
+                            <p><i class="fab fa-whatsapp mr-2"></i></i>+34 609 07 16 48</p>
                             <p>Avenida Finisterre 99</p>
                             <p>15004 A Coruña</p>
                             <p>España</p>

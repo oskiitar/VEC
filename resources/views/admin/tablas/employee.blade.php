@@ -40,7 +40,7 @@
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="deleteUser('employee',{{ $employee->id }})">
+                    <button class="btn btn-primary btn-sm" onclick="deleteUser('employee',{{ $employee->id }})">
                         <i class="fas fa-user-times"></i>
                     </button>
                 </td>

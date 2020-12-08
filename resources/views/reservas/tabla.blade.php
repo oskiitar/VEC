@@ -14,7 +14,7 @@
             <td>{{ $reserve->reserve_date }}</td>
             <td>{{ $reserve->pay->total }}</td>
             <td>
-            <a href="/reservas/pdf/{{ $reserve->id }}" class="btn btn-danger btn-sm mt-n1">
+            <a href="/reservas/pdf/{{ $reserve->id }}" class="btn btn-primary btn-sm mt-n1">
                     <i class="fas fa-file-download mr-2"></i>PDF
                 </a>
             </td>

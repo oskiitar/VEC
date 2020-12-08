@@ -39,6 +39,7 @@ class ReserveController extends Controller
         $total = 0;
         foreach($rents as $renting){
             $room = $renting->room;
+            $renting['room_id'] = $room->id;
             $renting['name'] = $room->name;              
             $renting['description'] = $room->description;              
             $renting['price'] = $room->price;

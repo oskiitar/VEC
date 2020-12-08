@@ -4,16 +4,20 @@
         <li data-target="#carouselwithimages" data-slide-to="0" class="active"></li>
         <li data-target="#carouselwithimages" data-slide-to="1"></li>
         <li data-target="#carouselwithimages" data-slide-to="2"></li>
+        <li data-target="#carouselwithimages" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active" data-interval="3000">
-            <img src="{{ asset('img/banner-1.jpg') }}" class="d-block w-100" alt="Primera imagen carrusel">
+            <img class="banner-altura-78" src="{{ asset('img/carousel_1.jpg')}}">
         </div>
         <div class="carousel-item" data-interval="3000">
-            <img src="{{ asset('img/banner-2.jpg') }}" class="d-block w-100" alt="Segunda imagen carrusel">
+            <img class="banner-altura-78" src="{{ asset('img/carousel_2.jpg')}}">
         </div>
         <div class="carousel-item" data-interval="3000">
-            <img src="{{ asset('img/banner-3.jpg') }}" class="d-block w-100" alt="Tercera imagen carrusel">
+            <img class="banner-altura-78" src="{{ asset('img/carousel_3.jpg')}}">
+        </div>
+        <div class="carousel-item" data-interval="3000">
+            <img class="banner-altura-78" src="{{ asset('img/carousel_4.jpg')}}">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselwithimages" role="button" data-slide="prev">

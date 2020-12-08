@@ -30,7 +30,3 @@ async function findUser(id) {
         }
     });
 }
-
-function update(data){
-    console.log(data);
-}

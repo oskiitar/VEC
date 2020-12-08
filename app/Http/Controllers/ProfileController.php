@@ -59,7 +59,11 @@ class ProfileController extends Controller
     }
 
     public function loadUser($id){
-        $user = User::with('client')->find($id);
+        $user = User::find($id);
+
+        if($user->client){
+            $user = User::with('client')->find($id);
+        }
 
         if($user->employee){
             $user = User::with('employee')->find($id);
