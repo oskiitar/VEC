@@ -32,21 +32,34 @@ Route::get('contacto', function () {
     return view('contacto.contacto');
 });
 
+Route::get('politica', function() {
+    return view('politica');
+});
+
 Route::post('email','MailController@sendMail')->name('email');
 
 
+/**
+ * Grupo de rutas del perfil de usuario
+ */
 Route::group(['middleware'=>['auth', 'verified'], 'prefix'=>'perfil'], function () {
     Route::get('/', 'ProfileController@showProfile');
     Route::post('actualizar', 'ProfileController@update')->name('profile_update');
     Route::get('user/{id}', 'ProfileController@loadUser');
 });
 
+/**
+ * Grupo de rutas de reservas de clientes
+ */
 Route::group(['middleware'=>['auth', 'verified', 'client'], 'prefix'=>'reservas'], function () {
     Route::get('/', 'ReserveController@showReserves');
     Route::get('/{id}', 'ReserveController@loadReserves');
     Route::get('pdf/{id}', 'ReserveController@exportPDF');
 });
 
+/**
+ * Grupo de rutas de clientes que reservan
+ */
 Route::group(['middleware' => ['auth', 'verified', 'client'], 'prefix' => 'reservar'], function () {
     Route::get('/', 'ReserveController@show');
     Route::post('horario', 'ReserveController@loadSchedule');
@@ -57,6 +70,9 @@ Route::group(['middleware' => ['auth', 'verified', 'client'], 'prefix' => 'reser
     Route::post('pagar', 'PayController@payReserve');
 });
 
+/**
+ * Grupo de rutas de la administracion
+ */
 Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'], function () {
     Route::get('/', 'AdminController@show')->name('admin');
     Route::get('client', 'AdminController@loadClients');

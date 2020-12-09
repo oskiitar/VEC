@@ -37,7 +37,7 @@
                                         title="Datos de la sala con mayor beneficio">Sala mas lucrativa</button>
                                         <button type="button" class="dropdown-item btn btn-item"
                                         onclick="selectQuerys('reserve')" data-toggle="tooltip" data-placement="right"
-                                        title="Datos de las reservas del todo el año">Lista de resevas anual</button>
+                                        title="Datos de las reservas de todo el año">Lista de resevas anual</button>
                                 </div>
                             </div>
                         </div>

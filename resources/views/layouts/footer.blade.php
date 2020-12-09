@@ -48,7 +48,7 @@
             <h6>Todos los derechos reservados</h6>
         </div>
         <div class="col">
-            <h6><a class="text-dark text-decoration-none" href="usuario/politica.html">Politica de privacidad</a></h6>
+            <h6><a class="text-dark text-decoration-none" href="/politica">Politica de cookies</a></h6>
         </div>
     </div>
 </footer>
