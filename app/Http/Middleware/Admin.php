@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Middleware de ADMIN VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.11.2020
+ */
+
 namespace App\Http\Middleware;
 
 use Closure;

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Rutas web VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 4.0
+ * @date 09.12.2020
+ */
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,4 +66,9 @@ Route::group(['middleware' => ['auth','admin','verified'], 'prefix' => 'admin'],
     Route::post('client/update', 'AdminController@clientUpdate');
     Route::post('employee/update', 'AdminController@employeeUpdate');
     Route::get('user/{id}','AdminController@userDelete');
+    Route::get('query/birthday', 'AdminController@birthdayQuery');
+    Route::get('query/creditcard', 'AdminController@creditcardQuery');
+    Route::get('query/aged', 'AdminController@agedQuery');
+    Route::get('query/room', 'AdminController@roomQuery');
+    Route::get('query/reserve', 'AdminController@reserveQuery');
 });

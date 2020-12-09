@@ -15,6 +15,11 @@ use Mail;
 
 class MailController extends Controller
 {
+
+    /**
+     * Realiza un envio de email al correo de la configuracion
+     * Revisar el archivo .env
+     */
     public function sendMail(Request $data)
     {
         $data = [

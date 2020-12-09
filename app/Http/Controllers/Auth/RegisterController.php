@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Controlador de registro VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 03.11.2020
+ */
+
 namespace App\Http\Controllers\Auth;
 
 use App\User;

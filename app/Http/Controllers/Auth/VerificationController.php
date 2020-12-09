@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Controlador de verificacion de emails VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 15.11.2020
+ */
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;

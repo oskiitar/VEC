@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Rutas API VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 09.12.2020
+ */
+
 use Illuminate\Http\Request;
 
 /*
@@ -17,6 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('user', 'UserApiController');
+Route::resource('user', 'ClientApiController');
 Route::resource('payway', 'PaywayApiController');
 Route::resource('room', 'RoomApiController');

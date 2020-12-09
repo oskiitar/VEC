@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Controlador de resevas VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 03.12.2020
+ */
+
 namespace App\Http\Controllers;
 
 use App\Reserve;
@@ -13,16 +20,25 @@ use Illuminate\Support\Facades\DB;
 
 class ReserveController extends Controller
 {
+    /**
+     * Devuelve la vista de reservar
+     */
     public function show()
     {
         return view('reservas.reservar');
     }
 
+    /**
+     * Devuelve la vista de reservas
+     */
     public function showReserves()
     {
         return view('reservas.reservas');
     }
 
+    /**
+     * Devuelve las reservas de un cliente
+     */
     public function loadReserves($id)
     {
         $reserves = Reserve::where('client_id','=',$id)->get();
@@ -30,6 +46,9 @@ class ReserveController extends Controller
         return $view;
     }
 
+    /**
+     * Exporta a PDF la reserva de un cliente
+     */
     public function exportPDF($id)
     {        
         $reserve = Reserve::find($id);
@@ -68,16 +87,26 @@ class ReserveController extends Controller
         return $pdf->download('mi_reserva_'.$id.'.pdf');
     }
 
+    /**
+     * Devuelve un horario a partir del parametro dia
+     */
     public function loadSchedule(Request $request)
     {
         return Renting::whereDay('start', $request->day)->get();
     }
 
+
+    /**
+     * Devuelve las salas de VEC
+     */
     public function getRooms()
     {
         return Room::all();
     }
 
+    /**
+     * Devuelve los datos de una sala VEC
+     */
     public function loadRoom($id)
     {
         $room = Room::find($id);

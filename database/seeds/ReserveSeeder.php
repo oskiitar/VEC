@@ -19,7 +19,7 @@ class ReserveSeeder extends Seeder
      */
     public function run()
     {
-        $clients = Client::all();
+        $clients = Client::where('user_id','<',30)->get();
         $faker = Faker::create('es_ES');
         $date = Carbon::create('next tuesday')->locale('es_ES');
         $date->hour = 16;

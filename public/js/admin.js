@@ -1,3 +1,10 @@
+/**
+ * @description JS admin VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 4.0
+ * @date 09.12.2020
+ */
+
 $(function () { // Funcion que se ejecuta cuando carga el documento
     selectClients();
 });
@@ -17,7 +24,7 @@ function selectEmployees() {
 function selectQuerys(query) {
     $('.btn-outline-primary').removeClass('active');
     $('#btn-querys').addClass('active');
-    loadData(query, htmlData);
+    loadData(query, htmlData, true);
 }
 
 /******************** Creacion ********************************/
@@ -57,7 +64,6 @@ function submitCreate(model) {
                 password_confirmation: $('#password-addEmployee-confirm').val(),
                 is_admin: $('#is_admin-addEmployee').is(':checked') ? 1 : 0,
             }
-            console.log(employee);
             $('#modalAddEmployee').modal('toggle');
             saveData('employee', employee);
     }
@@ -211,15 +217,19 @@ function validateContract_end(dataStart, dataEnd, model) {
 
 /************** AJAX *************************/
 
-async function loadData(model, callback) {
+async function loadData(model, callback, query) {
     let url = 'admin/' + model;
+
+    if (query) {
+        url = 'admin/query/' + model;
+    }
 
     await $.ajax({
         type: "GET",
         url: url,
         success: function (res) {
             alertify.success('Datos cargados');
-            callback(res);
+            callback(res); // recibe tabla renderizada
         },
         error: function (e) {
             console.log(e.responseText);

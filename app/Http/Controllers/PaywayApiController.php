@@ -1,8 +1,16 @@
 <?php
 
+/**
+ * @description Controlador API de metodos de pago VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.12.2020
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Payway;
 
 class PaywayApiController extends Controller
 {
@@ -13,7 +21,7 @@ class PaywayApiController extends Controller
      */
     public function index()
     {
-        //
+        return Payway::all();
     }
 
     /**
@@ -23,7 +31,7 @@ class PaywayApiController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +42,10 @@ class PaywayApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payway = new Payway;
+        $payway->fill($request->all());
+        $payway->save();
+        return $payway;
     }
 
     /**
@@ -45,7 +56,7 @@ class PaywayApiController extends Controller
      */
     public function show($id)
     {
-        //
+        return Payway::find($id);
     }
 
     /**
@@ -56,7 +67,7 @@ class PaywayApiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +79,9 @@ class PaywayApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $payway = Payway::find($id);
+        $payway->fill($request->all());
+        return $payway;
     }
 
     /**
@@ -79,6 +92,6 @@ class PaywayApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Payway::find($id)->delete();
     }
 }

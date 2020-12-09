@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->primary('user_id');
             $table->string('address');
             $table->dateTime('created_at')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

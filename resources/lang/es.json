@@ -1,6 +1,7 @@
 {
   "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificación a su correo electrónico.",
   "Address": "Dirección",
+  "Age": "Edad",
   "All rights reserved.": "Todos los derechos reservados.",
   "Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electrónico con el enlace de verificación que le fue enviado.",
   "Birthday": "Fecha de nacimiento",  
@@ -37,6 +38,7 @@
   "Pay": "Pagar",
   "Please click the button below to verify your email address.": "Por favor, haga clic en el botón de abajo para verificar su dirección de correo electrónico.",
   "Please confirm your password before continuing.": "Por favor, confirma tu contraseña antes de continuar.",
+  "Price": "Precio",
   "Regards": "Saludos",
   "Register": "Registrar",
   "Remember Me": "Recuérdame",
@@ -56,6 +58,7 @@
   "Toggle navigation": "Activar navegación",
   "Too Many Attempts.": "Demasiadas intentos",
   "Too Many Requests": "Demasiadas peticiones",
+  "Type": "Tipo",
   "Unauthorized": "No autorizado",
   "Update": "Actualizar",
   "Verify Email Address": "Confirma tu correo electrónico",

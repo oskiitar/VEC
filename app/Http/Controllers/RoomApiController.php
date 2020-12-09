@@ -1,8 +1,16 @@
 <?php
 
+/**
+ * @description Controlador API de salas VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 09.12.2020
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Room;
 
 class RoomApiController extends Controller
 {
@@ -13,7 +21,7 @@ class RoomApiController extends Controller
      */
     public function index()
     {
-        //
+        return Room::all();
     }
 
     /**
@@ -23,7 +31,7 @@ class RoomApiController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +42,10 @@ class RoomApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $room = new Room;
+        $room->fill($resquest->all());
+        $room->save();
+        return $room;
     }
 
     /**
@@ -45,7 +56,7 @@ class RoomApiController extends Controller
      */
     public function show($id)
     {
-        //
+        return Room::find($id);
     }
 
     /**
@@ -56,7 +67,7 @@ class RoomApiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +79,10 @@ class RoomApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $room = Room::find($id);
+        $room->fill($request->all());
+        $room->save();
+        return $room;
     }
 
     /**
@@ -79,6 +93,6 @@ class RoomApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Room::find($id)->delete();
     }
 }

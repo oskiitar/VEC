@@ -1,3 +1,10 @@
+/**
+ * @description JS pay VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.11.2020
+ */
+
 var payment = null; // Metodo de pago
 
 var total = 0; // Total del pago

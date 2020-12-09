@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->primary('user_id');
             $table->date('contract_start');
             $table->date('contract_end')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

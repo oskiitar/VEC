@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Modelo de metodo de pago VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.11.2020
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

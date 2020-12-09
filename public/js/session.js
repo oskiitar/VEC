@@ -1,3 +1,10 @@
+/**
+ * @description JS session VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 03.12.2020
+ */
+
 var reserve = Object.entries(sessionStorage);
 var basket = [];
 var user = $('#user_id').val();

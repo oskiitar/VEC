@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Controlador de perfil de usuario VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 05.12.2020
+ */
+
 namespace App\Http\Controllers;
 
 use \Illuminate\Support\Facades\Validator;
@@ -54,10 +61,16 @@ class ProfileController extends Controller
         ]);
     }
 
+    /**
+     * Devuelve la vista del perfil
+     */
     public function showProfile(){
         return view('perfil');
     }
 
+    /**
+     * Devuelve un usuario cliente/empleado
+     */
     public function loadUser($id){
         $user = User::find($id);
 

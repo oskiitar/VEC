@@ -6,12 +6,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-3">
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-er-list" data-toggle="list"
+                        <button class="list-group-item list-group-item-action btn btn-primary active" id="list-er" data-toggle="list"
                             href="#list-er" role="tab" aria-controls="er" onclick="showEr($('#er-room').val())">Sala
-                            Escape Room</a>
-                        <a class="list-group-item list-group-item-action" id="list-vr-list" data-toggle="list"
+                            Escape Room</button>
+                        <button class="list-group-item list-group-item-action btn" id="list-vr" data-toggle="list"
                             href="#list-vr" role="tab" aria-controls="vr" onclick="showVr($('#vr-room').val())">Sala
-                            Realidad Virtual</a>
+                            Realidad Virtual</button>
                     </div>
                     <div id="list-er-room" class="list-group mt-4">
                         <select id="er-room" class="custom-select" onchange="selectRoom(this.value)">

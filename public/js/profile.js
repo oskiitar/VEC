@@ -1,3 +1,10 @@
+/**
+ * @description JS profile VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 03.12.2020
+ */
+
 $(function () { // Funcion que se ejecuta cuando carga el documento
     findUser(user);
 });

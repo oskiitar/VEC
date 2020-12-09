@@ -1,3 +1,10 @@
+/**
+ * @description JS reserve VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.11.2020
+ */
+
 var roomSelected = null;
 
 var rooms = null;
@@ -20,18 +27,22 @@ function selectRoom(id) {
 
 function clean() {
     $('#btn-reserve').attr('disabled', true).removeClass('btn-success').addClass('btn-outline-secondary'); // Restaura boton
-    $('.btn-secondary').removeClass('btn-danger').removeClass('btn-success').removeAttr('disabled'); // Restaura botones
+    $('.btn-secondary').removeClass('btn-primary').removeClass('btn-success').removeAttr('disabled'); // Restaura botones
     $('#reserve-date-error').empty(); // Limpia los errores
 }
 
 function showEr(value) {
     selectRoom(value);
+    $('#list-er').addClass('btn-primary active');
+    $('#list-vr').removeClass('btn-primary active');
     $('#list-er-room').removeAttr('hidden');
     $('#list-vr-room').attr('hidden', true);
 }
 
 function showVr(value) {
     selectRoom(value);
+    $('#list-er').removeClass('btn-primary active');
+    $('#list-vr').addClass('btn-primary active');
     $('#list-er-room').attr('hidden', true);
     $('#list-vr-room').removeAttr('hidden');
 }
@@ -94,7 +105,7 @@ function changeButtons(data) {
     $.each(data, function (key, value) {
         if (value.start && value.room_id === roomSelected) {
             let hour = new Date(value.start).getHours();
-            $('#btn' + hour).addClass('btn-danger').attr('disabled', true);
+            $('#btn' + hour).addClass('btn-primary').attr('disabled', true);
         }
     });
 }

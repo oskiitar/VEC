@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Modelo de cliente VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 03.11.2020
+ */
+
 namespace App;
 
 class Client extends User

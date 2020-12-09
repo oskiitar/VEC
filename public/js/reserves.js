@@ -1,3 +1,10 @@
+/**
+ * @description JS reserves VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.11.2020
+ */
+
 $(function () { // Funcion que se ejecuta cuando carga el documento
     loadReserves(user);
 });

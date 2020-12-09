@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @description Controlador de pagos VEC
+ * @author Oscar Rodriguez Sedes
+ * @version 1.0
+ * @date 23.11.2020
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,20 +19,26 @@ use App\Invoice;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-/**
- * 
- */
 class PayController extends Controller
 {
+    /**
+     * Devuelve la vista pago
+     */
     public function show()
     {
         return view('reservas.pago');
     }
 
+    /**
+     * Devuelve los metodos de pago
+     */
     public function getPayment(){
         return Payway::all();
     }
 
+    /**
+     * Realiza toda la operacion de reserva, pago y generacion de factura
+     */
     public function payReserve(Request $request){
         
         DB::transaction(function () use($request) {
